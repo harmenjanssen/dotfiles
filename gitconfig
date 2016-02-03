@@ -1,0 +1,28 @@
+[user]
+	name = Harmen Janssen
+	email = harmen@grrr.nl
+[core]
+	autocrlf = false
+	safecrlf = warn
+	editor = vim
+	fileMode = false
+	excludesfile = ~/.gitignore
+[push]
+	default = upstream
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	changelog = diff-tree --no-commit-id --name-only
+[color]
+	ui = auto
+[mergetool]
+	keepBackup = true
+[merge]
+	conflictstyle = diff3
+[rerere]
+	enabled = 1
