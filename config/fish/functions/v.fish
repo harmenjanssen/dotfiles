@@ -1,0 +1,3 @@
+function v
+	mvim
+end
