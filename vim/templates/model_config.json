@@ -1,0 +1,14 @@
+{
+	"inputs": {
+		"name": {
+		}
+	},
+
+	"relations": {
+	},
+
+	"behaviors": {
+		"Sluggable": {}
+	}
+
+}

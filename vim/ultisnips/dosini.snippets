@@ -1,0 +1,15 @@
+snippet aclmodel
+acl.resources.Model_${1:modelname}.id = Model_$1
+acl.resources.Model_$1.allow.all.roles = "admin"
+endsnippet
+
+snippet route
+routes.${1:routename}.route = "${2:route}"
+routes.$1.defaults.controller = ${3:controller}
+routes.$1.defaults.action = ${4:action}$0
+endsnippet
+
+snippet snippet
+snippets.${1}.has_text = 1
+snippets.${1/\s+/_/g}.text = "${2}"
+endsnippet

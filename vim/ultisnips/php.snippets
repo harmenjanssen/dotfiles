@@ -1,0 +1,308 @@
+# ====================
+# Native PHP functions
+# ====================
+snippet strrep "str_replace"
+str_replace(${1:search}, ${2:replace}, ${3:subject})$0
+endsnippet
+snippet strpos "strpos"
+strpos(${1:haystack}, ${2:needle})${3: !== false}$0
+endsnippet
+snippet substr "substr"
+substr(${1:string}, ${2:start}${3:, length})$0
+endsnippet
+snippet ake "array_key_exists" i
+array_key_exists(${1:key}, ${2:collection})$0
+endsnippet
+snippet ina "in_array" i
+in_array(${1:needle}, ${2:haystack})$0
+endsnippet
+snippet aw "array_walk"
+array_walk(${1:&array}, ${2:function}${3:, ${4:mixed userdata = NULL}})$0
+endsnippet
+snippet af "array_filter" i
+array_filter(${1:array}, ${2:callback});
+endsnippet
+snippet am "array_map" i
+array_map(${1:callback}, ${2:array});
+endsnippet
+
+# ====================
+# Language constructs
+# ====================
+snippet php
+<?php
+${1}
+?>
+endsnippet
+snippet ec
+echo "${1:string}"${2};
+endsnippet
+snippet fe "foreach"
+foreach (${1:collection} as ${2:key} => ${3:value}) {
+	$0
+}
+endsnippet
+snippet if
+if ($1) {
+	$0
+}
+endsnippet
+snippet else
+else {
+	$0
+}
+endsnippet
+snippet rt
+return true;$0
+endsnippet
+snippet rf
+return false;$0
+endsnippet
+# ====================
+# OOP
+# ====================
+snippet construct
+/**
+ * Class constructor
+ * @return Void
+ */
+public function __construct(${1:params}) {
+	$0
+}
+endsnippet
+snippet publ "public function"
+public function ${1:methodname}(${2:params}) {
+	$0
+}
+endsnippet
+snippet prot "protected function"
+protected function ${1:methodname}(${2:params}) {
+	$0
+}
+endsnippet
+snippet priv "private function"
+private function ${1:methodname}(${2:params}) {
+	$0
+}
+endsnippet
+snippet throw
+throw new ${1:Exception}('${2}');${3}
+endsnippet
+snippet getter "getter"
+/**
+ * Get ${1:identifier}
+ * @return ${2:type}
+ */
+public function get${1/\w+\s*/\u$0/}() {
+	return $this->_$1;
+}
+$0
+endsnippet
+snippet setter "setter"
+/**
+ * Set ${1:identifier}
+ * @param ${2:type} $$1
+ * @return $this
+ */
+public function set${1/\w+\s*/\u$0/}($$1) {
+	$this->_$1 = $$1;
+	return $this;
+}
+$0
+endsnippet
+snippet this "chaining shortcut" i
+$this->$0
+endsnippet
+snippet $this "chaining shortcut" i
+$this->$0
+endsnippet
+# ====================
+# Zend
+# ====================
+snippet zend404
+throw new Zend_Controller_Action_Exception('${1:message}', 404);
+endsnippet
+snippet esc
+$this->escape(${1:value})$0
+endsnippet
+snippet partial
+$this->partial('partials/${1:path}.phtml', 'default', array(${2}));$0
+endsnippet
+snippet viewAction
+public function viewAction() {
+	$request = $this->getRequest();
+	$slug = $request->getParam('slug');
+	$model = new Model_${1:modelname};
+	$row = $model->fetchBySlug($slug);
+	if (!$row) {
+		throw new Zend_Controller_Action_Exception('Het item is niet gevonden.', 404);
+	}
+	$this->view->${2:recordvar} = $row;
+}
+endsnippet
+
+# ====================
+# Garp
+# ====================
+snippet controller
+class ${1:controller}Controller extends Garp_Controller_Action {
+	public function indexAction() {
+		$0
+	}
+}
+endsnippet
+snippet action
+public function ${1:action}Action() {
+	$request = $this->getRequest();
+	$this->view->title = ${2:title};
+	$0
+}
+endsnippet
+snippet garpmodel
+class Model_${1:modelname} extends Garp_Model_Db {
+	protected $_name = '${2:tablename}';
+}
+endsnippet
+snippet garpdoc
+/**
+ * ${1:classname}
+ * ${2:class description}
+ *
+ * @author       Harmen Janssen | grrr.nl
+ * @version      0.1.0
+ * @package      Garp_${3:package}
+ */
+ $0
+endsnippet
+snippet bm "bindModel" i
+bindModel(${1:model}${2:, $options})$0
+endsnippet
+snippet beforeFetch
+public function beforeFetch(&$args) {
+	$model = &$args[0];
+	$select = &$args[1];
+	$0
+}
+endsnippet
+snippet afterFetch
+public function afterFetch(&$args) {
+	$model   = &$args[0];
+	$results = &$args[1];
+	$select  = &$args[2];
+	$0
+}
+endsnippet
+snippet beforeInsert
+public function beforeInsert(&$args) {
+	$model = &$args[0];
+	$data  = &$args[1];
+	$0
+}
+endsnippet
+snippet afterInsert
+public function afterInsert(&$args) {
+	$model      = &$args[0];
+	$data       = &$args[1];
+	$primaryKey = &$args[2];
+	$0
+}
+endsnippet
+snippet beforeUpdate
+public function beforeUpdate(&$args) {
+	$model = &$args[0];
+	$data  = &$args[1];
+	$where = &$args[2];
+	$0
+}
+endsnippet
+snippet afterUpdate
+public function afterUpdate(&$args) {
+	$model        = &$args[0];
+	$affectedRows = &$args[1];
+	$data         = &$args[2];
+	$where        = &$args[3];
+	$0
+}
+endsnippet
+snippet beforeDelete
+public function beforeDelete(&$args) {
+	$model = &$args[0];
+	$where = &$args[1];
+	$0
+}
+endsnippet
+snippet afterDelete
+public function afterDelete(&$args) {
+	$model = &$args[0];
+	$affectedRows = &$args[1];
+	$where = &$args[2];
+	$0
+}
+endsnippet
+snippet beforeSave
+public function beforeInsert(&$args) {
+	$model = &$args[0];
+	$data  = &$args[1];
+	$this->_beforeSave($data);
+}
+
+public function beforeUpdate(&$args) {
+	$model = &$args[0];
+	$data  = &$args[1];
+	$where = &$args[2];
+	$this->_beforeSave($data);
+}
+
+protected function _beforeSave(array &$data) {
+	$0
+}
+endsnippet
+snippet afterSave
+public function afterInsert(&$args) {
+	$model      = &$args[0];
+	$data       = &$args[1];
+	$primaryKey = &$args[2];
+	$this->_afterSave();
+}
+
+public function afterUpdate(&$args) {
+	$model        = &$args[0];
+	$affectedRows = &$args[1];
+	$data         = &$args[2];
+	$where        = &$args[3];
+	$this->_afterSave();
+}
+
+protected function _afterSave() {
+	$0
+}
+endsnippet
+
+snippet trans
+echo $this->escape(__('${1}'));$2
+endsnippet
+
+# ====================
+# docblock
+# ====================
+snippet param
+@param ${1:type} ${2:parameter name} ${3:description}
+endsnippet
+snippet return
+@return ${1:type} ${2:description}
+endsnippet
+
+# ====================
+# Misc
+# ====================
+snippet debug
+print '<pre>'; print_r(${1:var}); exit;
+endsnippet
+snippet enctype
+enctype="multipart/form-data"$0
+endsnippet
+
+snippet __ "translate and escape"
+echo $this->escape(__(${1}));
+endsnippet
+

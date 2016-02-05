@@ -1,0 +1,17 @@
+snippet mi "Min-width media query mixin"
+@include bp-min(${1:$small}) {
+	$2
+}
+endsnippet
+
+snippet ma "Max-width media query mixin"
+@include bp-max(${1:$small}) {
+	$2
+}
+endsnippet
+
+snippet mima "Max-width media query mixin"
+@include bp-min-max(${1:$small}, ${2:$medium}) {
+	$3
+}
+endsnippet
