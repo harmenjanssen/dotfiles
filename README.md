@@ -15,3 +15,5 @@ My Vim setup uses Vundle, so grab that separately:
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
+
+And run ```VundleInstall``` from Vim.
