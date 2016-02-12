@@ -40,7 +40,6 @@ function iterate(files, index, overwrite) {
 				console.log('Skipping .' + file);
 			}
 			iterate(files, index+1, overwrite);
-			//rl.close();
 		});
 	} else {
 		linkFile(file);
@@ -50,4 +49,34 @@ function iterate(files, index, overwrite) {
 
 function linkFile(file) {
 	console.log('linking file .' + file);
+	let target = process.env['HOME'] + '/.' + file;
+	// unlink the file preemptively, just catch errors for non-existent files
+	rmFile(target);
+	fs.symlinkSync(__dirname + '/' + file, target);
 }
+
+function rmFile(target) {
+	let stat;
+	try {
+		stat = fs.lstatSync(target);
+	} catch (e) {
+		// ignore non-existent files
+		if (e.code === 'ENOENT') {
+			return;
+		}
+	}
+	return stat.isDirectory() ? rmDir(target) : fs.unlinkSync(target);
+}
+
+// recursively remove directory
+function rmDir(path) {
+	fs.readdirSync(path).forEach((file,index) => {
+	  	let curPath = path + "/" + file;
+	  	if (fs.lstatSync(curPath).isDirectory()) { // recurse
+	  	    return rmDir(curPath);
+	  	}
+	  	fs.unlinkSync(curPath);
+	});
+	return fs.rmdirSync(path);
+};
+
