@@ -1,6 +1,9 @@
-# Dot files
+# Dotfiles
 
 Useful for setting up new machines.
+
+Got a lot of opinionated stuff, or very specific work things, especially in Vim. So it's probably
+best to cherry-pick the stuff you like.
 
 Install:
 
