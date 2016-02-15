@@ -5,6 +5,9 @@ set -x -g APPLICATION_ENV development
 
 set fish_greeting
 
+set -x CFLAGS -Qunused-arguments
+set -x CPPFLAGS -Qunused-arguments
+
 set -x -g CLICOLOR 1
 set -x -g LSCOLORS GxFxCxDxBxhgedabagacad
 set -x -g TERM xterm-color
