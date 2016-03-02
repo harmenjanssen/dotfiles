@@ -37,6 +37,8 @@ endif
 	Plugin 'jaxbot/semantic-highlight.vim'
 	Plugin 'evidens/vim-twig'
 
+	Plugin 'AlessandroYorba/Alduin'
+
 	" Javascript stuff
 	Plugin 'jelera/vim-javascript-syntax'
 	Plugin 'pangloss/vim-javascript'
@@ -94,6 +96,7 @@ endif
 	onoremap " i"
 	onoremap { i{
 
+	" jump to next equals sign. Apparently I change variable names a lot
 	onoremap = f=
 
 	" fast saving
@@ -112,6 +115,7 @@ endif
 	nnoremap <Leader>c "_c
 	nnoremap <Leader>x "_x
 
+	" experimental and not yet production-ready: a function text-object
 	vnoremap af <esc>?function<cr>vf{%
 	vnoremap if <esc>?function<cr>f{vi{
 	onoremap af :<c-u>execute "normal! ?function\r:nohlsearch\rvf{%"<cr>
@@ -342,7 +346,7 @@ endif
 	augroup END
 
 	" use the system clipboard
-	"set clipboard=unnamed
+	set clipboard=unnamed
 
 	" improve performance of listings by ignoring some files
 	set wildignore+=*.o,*.obj,*.jpg,*.jpeg,*.png,*.gif,*.ser,.git,public/js/build/prod/*,vendor/*
