@@ -222,10 +222,10 @@ endif
 	endfunction
 
     "colorscheme base16-ocean
-    colorscheme base16-railscasts
+    colorscheme solarized
 
 	if has("gui_running")
-		set guifont=CamingoCode:h15
+		set guifont=CamingoCode:h13
 		set linespace=3
 		set fullscreen
 
@@ -349,7 +349,7 @@ endif
 	set clipboard=unnamed
 
 	" improve performance of listings by ignoring some files
-	set wildignore+=*.o,*.obj,*.jpg,*.jpeg,*.png,*.gif,*.ser,.git,public/js/build/prod/*,vendor/*
+	set wildignore+=*.o,*.obj,*.jpg,*.jpeg,*.png,*.gif,*.ser,.git,public/js/build/prod/*
 
 	" persistent history
 	set history=1000
@@ -498,7 +498,7 @@ endif
 	let g:ctrlp_cmd = 'CtrlP'
 	let g:ctrlp_working_path_mode = ''
 	let g:ctrlp_max_files = 0
-	let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor'
+	let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
 	let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 	" Syntastic
@@ -543,10 +543,10 @@ endif
 " }}}}
 " Garp {{{{
 	" Auto-clear cache after editing .ini files
-	augroup garpini
-		autocmd!
-		autocmd BufWritePost *.ini !php garp/scripts/garp.php Cache clear --e=development
-	augroup END
+	"augroup garpini
+		"autocmd!
+		"autocmd BufWritePost *.ini !php garp/scripts/garp.php Cache clear --e=development
+	"augroup END
 
 	" Create snippets from selected text
 	function! s:get_visual_selection()
