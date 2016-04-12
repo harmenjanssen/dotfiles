@@ -1,3 +1,5 @@
+--languages=-sql
+
 --langmap=javascript:.js
 --regex-javascript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*[\(]function[ \t]*\(/\1/f,function,functions/
 --regex-javascript=/^[ \t]*[\(]function[ \t]*([A-Za-z0-9._$]+)/\1/f,function,functions/
