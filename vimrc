@@ -39,6 +39,8 @@ endif
 
 	Plugin 'AlessandroYorba/Alduin'
 
+	Plugin 'itchyny/vim-cursorword'
+
 	" Javascript stuff
 	Plugin 'jelera/vim-javascript-syntax'
 	Plugin 'pangloss/vim-javascript'
@@ -276,6 +278,7 @@ endif
 	augroup textwidth
 		autocmd!
 		autocmd FileType gitcommit setlocal textwidth=72
+		autocmd FileType gitcommit colo base16-3024
 		autocmd BufRead *.phtml,*.html,*.csv setlocal textwidth=0
 	augroup END
 
