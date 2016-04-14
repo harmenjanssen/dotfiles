@@ -1,4 +1,4 @@
---languages=-sql
+--languages=-javascript,sql
 
 --langmap=javascript:.js
 --regex-javascript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*[\(]function[ \t]*\(/\1/f,function,functions/
@@ -44,7 +44,6 @@
 --exclude=.svn
 --exclude=.hg
 --exclude=min
---exclude=vendor
 --exclude=\*.min.\*
 --exclude=\*.map
 --exclude=\*.swp
@@ -63,4 +62,5 @@
 --exclude=\*.tar.\*
 --exclude=log
 --exclude=tmp
+--exclude=node_modules
 --exclude=bower_components
