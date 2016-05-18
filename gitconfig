@@ -21,6 +21,7 @@
 	dump = cat-file -p
 	changelog = diff-tree --no-commit-id --name-only
 	lastchange = log -p --follow -n 1
+	tags = tag --sort=v:refname
 [color]
 	ui = auto
 [mergetool]
