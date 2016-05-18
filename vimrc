@@ -34,6 +34,8 @@ endif
 	Plugin 'JazzCore/ctrlp-cmatcher'
 	Plugin 'airblade/vim-gitgutter'
 
+	Plugin 'othree/html5.vim'
+
 	Plugin 'jaxbot/semantic-highlight.vim'
 	Plugin 'evidens/vim-twig'
 
