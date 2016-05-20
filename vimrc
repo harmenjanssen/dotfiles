@@ -215,6 +215,8 @@ endif
 		endif
 
 		call PinkCursor()
+
+		"highlight ColorColumn ctermbg=green guibg=orange
 	endfunction
 
 	function! Light()
@@ -223,10 +225,13 @@ endif
 		endif
 
 		call PinkCursor()
+
+		highlight ColorColumn ctermbg=green guibg=orange
 	endfunction
 
     "colorscheme base16-ocean
     colorscheme solarized
+    call Dark()
 
 	if has("gui_running")
 		set guifont=CamingoCode:h13
@@ -319,8 +324,18 @@ endif
 	vnoremap / /\v
 
 	" Keep search matches in the middle of the window
-	nnoremap n nzzzv
-	nnoremap N Nzzzv
+	function! s:nice_next(cmd)
+  		let view = winsaveview()
+  		execute "normal! " . a:cmd
+  		if view.topline != winsaveview().topline
+    		normal! zz
+  		endif
+	endfunction
+
+	nnoremap <silent> n :call <SID>nice_next('n')<cr>
+	nnoremap <silent> N :call <SID>nice_next('N')<cr>
+	"nnoremap n nzzzv
+	"nnoremap N Nzzzv
 
 	nnoremap <leader><space> :noh<cr>
 
