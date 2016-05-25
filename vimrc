@@ -265,22 +265,13 @@ endif
 	set fileformat=unix
 	set textwidth=100
 	set colorcolumn=+1
+	set shiftwidth=4
+	set tabstop=4
+	set softtabstop=4
+	set noexpandtab
 
-	function! UseSpaceIndent()
-		set shiftwidth=2
-		set tabstop=2
-		set softtabstop=2
-		set expandtab
-	endfunction
-
-	function! UseTabIndent()
-		set shiftwidth=4
-		set tabstop=4
-		set softtabstop=4
-		set noexpandtab
-	endfunction
-
-	call UseTabIndent()
+	" Set indentation for js files
+	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 	augroup textwidth
 		autocmd!
