@@ -216,7 +216,9 @@ endif
 
 		call PinkCursor()
 
-		"highlight ColorColumn ctermbg=green guibg=orange
+		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+		match OverLength /\%101v.\+/
+		autocmd BufRead *.phtml,*.html,*.xml match OverLength /\%2000v.\+/
 	endfunction
 
 	function! Light()
@@ -226,7 +228,10 @@ endif
 
 		call PinkCursor()
 
-		highlight ColorColumn ctermbg=green guibg=orange
+		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+		match OverLength /\%101v.\+/
+		autocmd BufRead *.phtml,*.html,*.xml match OverLength /\%2000v.\+/
+
 	endfunction
 
     "colorscheme base16-ocean
