@@ -2,7 +2,7 @@
 	name = Harmen Janssen
 	email = harmen@grrr.nl
 [core]
-	autocrlf = false
+	autocrlf = input
 	safecrlf = warn
 	editor = vim
 	fileMode = false
