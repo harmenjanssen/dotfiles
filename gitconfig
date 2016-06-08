@@ -24,6 +24,7 @@
 	tags = tag --sort=v:refname
 	track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
 	amend = commit --amend -C HEAD
+	ctags = !.git/hooks/ctags
 [color]
 	ui = auto
 [mergetool]
@@ -32,3 +33,5 @@
 	conflictstyle = diff3
 [rerere]
 	enabled = 1
+[init]
+	templatedir = ~/.git_template

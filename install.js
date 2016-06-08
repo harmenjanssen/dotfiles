@@ -13,7 +13,7 @@ iterate(files, 0);
 function iterate(files, index, overwrite) {
 	let file = files[index];
 	if (undefined === file) {
-		console.log('Done!');
+		console.log('Done ☕️');
 		process.exit(0);
 	}
 	let target = process.env['HOME'] + '/.' + file;
