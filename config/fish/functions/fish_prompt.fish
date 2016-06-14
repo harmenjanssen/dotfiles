@@ -1,5 +1,10 @@
 function fish_prompt
+    # Print current time
+	set_color blue
+	printf (date "+%H:%M:%S ")
+
 	set_color normal
+
 	echo -n (prompt_pwd)
 	set -l git_branch (git rev-parse --abbrev-ref HEAD ^ /dev/null)
 
@@ -18,6 +23,9 @@ function fish_prompt
 			echo -n " "✓
 		end
 	end
+
+    # Finally, the place where actual commands are put in
 	set_color normal
 	printf "\n⚡️  "
+
 end

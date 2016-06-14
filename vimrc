@@ -42,6 +42,7 @@ endif
 	Plugin 'AlessandroYorba/Alduin'
 
 	Plugin 'itchyny/vim-cursorword'
+    Bundle 'dag/vim-fish'
 
 	" Javascript stuff
 	Plugin 'jelera/vim-javascript-syntax'
@@ -218,7 +219,7 @@ endif
 
 		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 		match OverLength /\%101v.\+/
-		autocmd BufRead *.phtml,*.html,*.xml match OverLength /\%2000v.\+/
+		autocmd BufNew,BufRead *.phtml,*.html,*.xml,*.md,*.sql,*.ini match none
 	endfunction
 
 	function! Light()
@@ -230,7 +231,7 @@ endif
 
 		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 		match OverLength /\%101v.\+/
-		autocmd BufRead *.phtml,*.html,*.xml match OverLength /\%2000v.\+/
+		autocmd BufNew,BufRead *.phtml,*.html,*.xml,*.md,*.sql,*.ini match none
 
 	endfunction
 
@@ -273,7 +274,7 @@ endif
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
-	set noexpandtab
+	set expandtab
 
 	" Set indentation for js files
 	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -293,6 +294,10 @@ endif
 	function! StripTrailingWhitespace()
   		normal mZ
   		let l:chars = col("$")
+  		let l:filetype = &filetype
+  		if (l:filetype == 'markdown')
+  		    return
+  		endif
   		%s/\s\+$//e
   		if (line("'Z") != line(".")) || (l:chars != col("$"))
     		echo "Trailing whitespace stripped\n"
