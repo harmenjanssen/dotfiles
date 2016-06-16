@@ -35,3 +35,5 @@
 	enabled = 1
 [init]
 	templatedir = ~/.git_template
+[interactive]
+	diffFilter = diff-highlight
