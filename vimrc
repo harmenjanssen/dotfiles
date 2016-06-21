@@ -235,8 +235,8 @@ endif
 
 	endfunction
 
-    "colorscheme base16-ocean
-    colorscheme solarized
+    colorscheme base16-ocean
+    "colorscheme solarized
     call Dark()
 
 	if has("gui_running")
