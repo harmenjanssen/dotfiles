@@ -5,17 +5,17 @@ FILES=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
 
 if [ "$FILES" != "" ]
 then
-	#echo "Checking PHP Lint..."
-	for FILE in $SFILES
-	do
-		php -l -d display_errors=0 $PROJECT/$FILE
-		if [ $? != 0 ]
-		then
-			echo "Fix the error before commit."
-			exit 1
-		fi
-		FILES="$FILES $PROJECT/$FILE"
-	done
+    #echo "Checking PHP Lint..."
+    for FILE in $SFILES
+    do
+        php -l -d display_errors=0 $PROJECT/$FILE
+        if [ $? != 0 ]
+        then
+            echo "Fix the error before commit."
+            exit 1
+        fi
+        FILES="$FILES $PROJECT/$FILE"
+    done
 
     # Determine wether this project contains phpcs
     if [ ! -f ./vendor/bin/phpcs ]
@@ -29,13 +29,13 @@ then
         STANDARDS_FILE="./vendor/grrr-amsterdam/garp3/phpcs.xml"
     fi
 
-	#echo "Running Code Sniffer..."
-	./vendor/bin/phpcs --standard=$STANDARDS_FILE --colors --encoding=utf-8 -n -p $FILES
-	if [ $? != 0 ]
-	then
-		echo "Fix the error before commit."
-		exit 1
-	fi
+    #echo "Running Code Sniffer..."
+    ./vendor/bin/phpcs --standard=$STANDARDS_FILE --colors --encoding=utf-8 -n -p $FILES
+    if [ $? != 0 ]
+    then
+        echo "Fix the error before commit."
+        exit 1
+    fi
 fi
 
 exit $?
