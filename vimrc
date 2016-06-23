@@ -283,7 +283,7 @@ endif
 		autocmd!
 		autocmd FileType gitcommit setlocal textwidth=72
 		autocmd FileType gitcommit colo base16-3024
-		autocmd BufRead *.phtml,*.html,*.csv setlocal textwidth=0
+		autocmd BufRead *.phtml,*.html,*.csv,*.twig setlocal textwidth=0
 	augroup END
 
 	augroup filetype_vim
