@@ -15,6 +15,10 @@ endif
 	call vundle#begin()
 
 	Plugin 'gmarik/Vundle.vim'
+
+    "Plugin 'kana/vim-textobj-user'
+    "Plugin 'whatyouhide/vim-textobj-xmlattr'
+
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'SirVer/ultisnips'
 	Bundle 'rking/ag.vim'
@@ -29,14 +33,13 @@ endif
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'tpope/vim-unimpaired'
 	Plugin 'kien/ctrlp.vim'
-	Plugin 'https://github.com/freeo/vim-kalisi'
 	Plugin 'chriskempson/base16-vim'
 	Plugin 'JazzCore/ctrlp-cmatcher'
 	Plugin 'airblade/vim-gitgutter'
 
 	Plugin 'othree/html5.vim'
+    Plugin 'plasticboy/vim-markdown'
 
-	Plugin 'jaxbot/semantic-highlight.vim'
 	Plugin 'evidens/vim-twig'
 
 	Plugin 'AlessandroYorba/Alduin'
@@ -558,8 +561,8 @@ endif
 	let g:tagbar_autoclose = 1
 	let g:tagbar_autofocus = 1
 
-	" SemanticHighlight
-	let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
+    " Markdown
+    let g:vim_markdown_folding_disabled = 1
 
 " }}}}
 " Garp {{{{
