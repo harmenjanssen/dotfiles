@@ -4,3 +4,5 @@ vim/bundle
 fish_history
 fishd.*
 fish_read_history
+config/configstore
+config/robomongo
