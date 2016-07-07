@@ -1,2 +1,15 @@
 #!/bin/sh
 .git/hooks/ctags >/dev/null 2>&1 &
+
+# The following is based on https://gist.github.com/sindresorhus/7996717
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+
+check_run() {
+    echo "$changed_files" | grep --quiet "$1" && eval "$2"
+}
+
+# Example usage
+# In this example it's used to run `npm install` if package.json changed and `bower install` if
+# `bower.json` changed.
+check_run package.json "npm install"
+#check_run bower.json "bower install"

@@ -39,6 +39,7 @@ endif
 
 	Plugin 'othree/html5.vim'
     Plugin 'plasticboy/vim-markdown'
+    Plugin 'digitaltoad/vim-pug'
 
 	Plugin 'evidens/vim-twig'
 
@@ -280,7 +281,7 @@ endif
 	set expandtab
 
 	" Set indentation for js files
-	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+	autocmd FileType javascript,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 	augroup textwidth
 		autocmd!
