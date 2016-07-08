@@ -1,2 +1,6 @@
 #!/bin/sh
-.git/hooks/ctags >/dev/null 2>&1 &
+
+branch=$(git symbolic-ref --short -q HEAD)
+if [ "$branch" -eq "develop" ] then
+    .git/hooks/ctags >/dev/null 2>&1 &
+fi

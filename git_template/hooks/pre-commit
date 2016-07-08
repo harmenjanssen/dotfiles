@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Execute PHP linting tools
+# Checks wether ./vendor/bin/phpcs is available before executing
+
 PROJECT=`php -r "echo dirname(dirname(dirname(realpath('$0'))));"`
 FILES=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
 
