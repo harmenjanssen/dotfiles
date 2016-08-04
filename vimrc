@@ -48,6 +48,8 @@ endif
 	Plugin 'itchyny/vim-cursorword'
     Bundle 'dag/vim-fish'
 
+    Plugin 'jaxbot/semantic-highlight.vim'
+
 	" Javascript stuff
 	Plugin 'jelera/vim-javascript-syntax'
 	Plugin 'pangloss/vim-javascript'
