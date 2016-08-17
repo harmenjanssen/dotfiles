@@ -30,29 +30,26 @@ endif
 	Plugin 'ervandew/supertab'
 	Plugin 'godlygeek/tabular'
 	Plugin 'majutsushi/tagbar'
-	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'tpope/vim-unimpaired'
 	Plugin 'kien/ctrlp.vim'
-	Plugin 'chriskempson/base16-vim'
 	Plugin 'JazzCore/ctrlp-cmatcher'
 	Plugin 'airblade/vim-gitgutter'
 
+    " Colors
+	Plugin 'chriskempson/base16-vim'
+	Plugin 'altercation/vim-colors-solarized'
+
+	" Languages
 	Plugin 'othree/html5.vim'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'digitaltoad/vim-pug'
-
 	Plugin 'evidens/vim-twig'
-
-	Plugin 'AlessandroYorba/Alduin'
-
-	Plugin 'itchyny/vim-cursorword'
     Bundle 'dag/vim-fish'
-
-    Plugin 'jaxbot/semantic-highlight.vim'
-
-	" Javascript stuff
 	Plugin 'jelera/vim-javascript-syntax'
 	Plugin 'pangloss/vim-javascript'
+
+	Plugin 'tpope/vim-abolish'
+    Plugin 'jaxbot/semantic-highlight.vim'
 
 	call vundle#end()
 
@@ -222,10 +219,6 @@ endif
 		endif
 
 		call PinkCursor()
-
-		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-		match OverLength /\%101v.\+/
-		autocmd BufNew,BufRead *.phtml,*.html,*.xml,*.md,*.sql,*.ini match none
 	endfunction
 
 	function! Light()
@@ -234,11 +227,6 @@ endif
 		endif
 
 		call PinkCursor()
-
-		highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-		match OverLength /\%101v.\+/
-		autocmd BufNew,BufRead *.phtml,*.html,*.xml,*.md,*.sql,*.ini match none
-
 	endfunction
 
     colorscheme base16-ocean
