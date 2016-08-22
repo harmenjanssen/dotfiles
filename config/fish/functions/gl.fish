@@ -1,3 +1,3 @@
 function gl
-	git pull
+	git pull $argv
 end
