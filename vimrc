@@ -31,8 +31,9 @@ endif
 	Plugin 'godlygeek/tabular'
 	Plugin 'majutsushi/tagbar'
 	Plugin 'tpope/vim-unimpaired'
-	Plugin 'kien/ctrlp.vim'
+	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'JazzCore/ctrlp-cmatcher'
+	Plugin 'FelikZ/ctrlp-py-matcher'
 	Plugin 'airblade/vim-gitgutter'
 
     " Colors
@@ -507,14 +508,15 @@ endif
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
 	let g:ctrlp_map = '<c-p>'
 
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir bower_components --ignore-dir node_modules'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir bower_components --ignore-dir node_modules'
   	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 	let g:ctrlp_cmd = 'CtrlP'
 	let g:ctrlp_working_path_mode = ''
 	let g:ctrlp_max_files = 0
 	let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
-	let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+    "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+    let g:ctrlp_match_func = {'match' : 'pymatcher#PyMatch' }
 
 	" Syntastic
 	" Use scss_lint for syntax checking
