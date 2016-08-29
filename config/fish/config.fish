@@ -23,4 +23,5 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 set -gx RBENV_ROOT /usr/local/var/rbenv
 . (rbenv init -|psub)
 
+set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
