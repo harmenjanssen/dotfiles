@@ -32,7 +32,6 @@ endif
 	Plugin 'majutsushi/tagbar'
 	Plugin 'tpope/vim-unimpaired'
 	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'JazzCore/ctrlp-cmatcher'
 	Plugin 'FelikZ/ctrlp-py-matcher'
 	Plugin 'airblade/vim-gitgutter'
 
