@@ -25,6 +25,7 @@
 	track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
 	amend = commit --amend -C HEAD
 	ctags = !.git/hooks/ctags
+	dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
 [color]
 	ui = auto
 [mergetool]
