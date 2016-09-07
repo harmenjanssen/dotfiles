@@ -47,9 +47,13 @@ endif
     Bundle 'dag/vim-fish'
 	Plugin 'jelera/vim-javascript-syntax'
 	Plugin 'pangloss/vim-javascript'
+    Plugin 'guns/vim-clojure-static'
+    Plugin 'tpope/vim-fireplace'
 
 	Plugin 'tpope/vim-abolish'
     Plugin 'jaxbot/semantic-highlight.vim'
+
+    Bundle 'joonty/vim-phpunitqf.git'
 
 	call vundle#end()
 
@@ -544,6 +548,9 @@ endif
 	" Supertab
 	 "let g:SuperTabDefaultCompletionType = "context"
 	" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+    " PHPUnit
+    let g:phpunit_cmd = "composer test"
 
 	" Bbye
 	nnoremap <leader>bd :Bdelete<cr>
