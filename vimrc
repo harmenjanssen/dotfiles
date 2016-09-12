@@ -53,8 +53,6 @@ endif
 	Plugin 'tpope/vim-abolish'
     Plugin 'jaxbot/semantic-highlight.vim'
 
-    Bundle 'joonty/vim-phpunitqf.git'
-
 	call vundle#end()
 
 	filetype plugin indent on
@@ -411,16 +409,9 @@ endif
 
 	" Execute php code in current buffer
 	function! ExecutePhp()
-		if filereadable(bufname("%"))
-			!php %
-		else
-			" Write temp file
-			let tmpFile = expand("~/.vim_temp_file.php")
-			silent execute "write!" . tmpFile
-			execute "!php " . tmpFile
-			" cleanup temp file
-			silent execute "!rm " . tmpFile
-		endif
+		let bufcontent = join(getline(1, line('$')), "")
+		let code = substitute(bufcontent, '\v\<\?(php)?|\?\>', '', 'g')
+        execute "!php -r " . shellescape(code)
 	endfunction
 
 	nnoremap <leader>p :call ExecutePhp()<cr>
@@ -511,7 +502,7 @@ endif
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
 	let g:ctrlp_map = '<c-p>'
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir bower_components --ignore-dir node_modules'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules'
   	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 	let g:ctrlp_cmd = 'CtrlP'
@@ -548,9 +539,6 @@ endif
 	" Supertab
 	 "let g:SuperTabDefaultCompletionType = "context"
 	" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-
-    " PHPUnit
-    let g:phpunit_cmd = "composer test"
 
 	" Bbye
 	nnoremap <leader>bd :Bdelete<cr>
