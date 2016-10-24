@@ -1,4 +1,12 @@
 function fish_prompt
+    # Send notification for long-running tasks
+    if test $CMD_DURATION
+        if test $CMD_DURATION -gt 2000
+            set secs (math "$CMD_DURATION / 1000")
+            ~/.config/fish/osx_notification $history[1] $status $secs
+        end
+    end
+
     # Print current time
 	set_color blue
 	printf (date "+%H:%M:%S ")

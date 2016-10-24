@@ -10,6 +10,7 @@
 [push]
 	default = upstream
 [alias]
+	cloen = clone
 	co = checkout
 	ci = commit
 	st = status
@@ -26,6 +27,7 @@
 	amend = commit --amend -C HEAD
 	ctags = !.git/hooks/ctags
 	dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
+	pop = stash pop
 [color]
 	ui = auto
 [mergetool]

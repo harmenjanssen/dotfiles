@@ -231,22 +231,26 @@ endif
 		call PinkCursor()
 	endfunction
 
-    colorscheme base16-ocean
-    "colorscheme solarized
+    colorscheme default
     call Dark()
 
 	if has("gui_running")
-		set guifont=CamingoCode:h13
-		set linespace=3
+        colorscheme solarized
+		"set guifont=CamingoCode:h13
+		set guifont=Fira\ Code:h13
+		" Alas, ligatures are awesome but text is showing up REALLY
+		" buggy. It eating all my chars 😞
+        set macligatures
+		set linespace=5
 		set fullscreen
 
 		" use dark background after 20:00
-		"if strftime("%H") >= 8 && strftime("%H") <= 20
-			"call Light()
-		"else
-			"call Dark()
-		"endif
-		call Dark()
+        if strftime("%H") >= 8 && strftime("%H") <= 20
+            call Light()
+        else
+            call Dark()
+        endif
+		"call Dark()
 
 	endif
 
