@@ -1,6 +1,7 @@
 [user]
 	name = Harmen Janssen
 	email = harmen@grrr.nl
+	signingkey = 680B7B08
 [core]
 	autocrlf = input
 	safecrlf = warn
@@ -40,3 +41,5 @@
 	templatedir = ~/.git_template
 [interactive]
 	diffFilter = diff-highlight
+[commit]
+	gpgsign = true
