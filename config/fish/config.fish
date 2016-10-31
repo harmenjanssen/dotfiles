@@ -25,5 +25,5 @@ set -gx RBENV_ROOT /usr/local/var/rbenv
 
 set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
-source ~/.config/fish/functions/gpg-init.fish
+#source ~/.config/fish/functions/gpg-init.fish
 gpg-init
