@@ -277,7 +277,7 @@ endif
 	set expandtab
 
 	" Set indentation for js files
-	autocmd FileType javascript,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+	autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 	augroup textwidth
 		autocmd!
@@ -385,8 +385,10 @@ endif
 
 	" return to last edit position when opening files
 	autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
+	 \ if &ft =~ 'gitcommit' |
+     \   if line("'\"") > 0 && line("'\"") <= line("$") |
+     \     exe "normal! g`\"" |
+     \   endif |
      \ endif
 
 	" This function finds the config.rb
