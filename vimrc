@@ -51,7 +51,8 @@ endif
     Plugin 'tpope/vim-fireplace'
 
 	Plugin 'tpope/vim-abolish'
-    Plugin 'jaxbot/semantic-highlight.vim'
+
+    Plugin 'neomake/neomake'
 
 	call vundle#end()
 
@@ -557,6 +558,9 @@ endif
     " Markdown
     let g:vim_markdown_folding_disabled = 1
 
+    " Neomake
+    autocmd! BufWritePost * Neomake
+    let g:neomake_php_phpcs_args_standard = "vendor/grrr-amsterdam/garp3/phpcs.xml"
 " }}}}
 " Garp {{{{
 	" Auto-clear cache after editing .ini files
