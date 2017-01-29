@@ -10,15 +10,20 @@ fi
 changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
 check_run() {
-    echo "$changed_files" | grep --quiet "$1" && eval "$2"
+    echo "$changed_files" | grep --quiet "$1"
+    if [ $? -eq 0 ]
+    then
+        echo ""
+        echo " 👉  $1 changed! You may want to $2."
+    fi
 }
 
 # Example usage
 # In this example it's used to run `npm install` if package.json changed and `bower install` if
 # `bower.json` changed.
-check_run package.json "npm install"
+check_run package.json "yarn install"
 
 # Installing composer dependencies
 check_run composer.lock "composer install"
 
-check_run bower.json "bower install"
+#check_run bower.json "bower install"
