@@ -232,18 +232,15 @@ endif
 		call PinkCursor()
 	endfunction
 
-    colorscheme default
+    colorscheme solarized
     call Dark()
 
 	if has("gui_running")
-        colorscheme solarized
 		"set guifont=CamingoCode:h13
 		set guifont=Fira\ Code:h13
-		" Alas, ligatures are awesome but text is showing up REALLY
-		" buggy. It eating all my chars 😞
         set macligatures
 		set linespace=5
-		set fullscreen
+		"set fullscreen
 
 		" use dark background after 20:00
         if strftime("%H") >= 8 && strftime("%H") <= 20
@@ -283,7 +280,6 @@ endif
 	augroup textwidth
 		autocmd!
 		autocmd FileType gitcommit setlocal textwidth=72
-		autocmd FileType gitcommit colo base16-3024
 		autocmd BufRead *.phtml,*.html,*.csv,*.twig setlocal textwidth=0
 	augroup END
 

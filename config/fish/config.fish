@@ -10,7 +10,7 @@ set -x CPPFLAGS -Qunused-arguments
 
 set -x -g CLICOLOR 1
 set -x -g LSCOLORS GxFxCxDxBxhgedabagacad
-set -x -g TERM xterm-color
+set -x -g TERM xterm-256color
 
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
