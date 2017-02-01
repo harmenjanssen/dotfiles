@@ -168,13 +168,10 @@ snippet /**
  * $0
  */
 endsnippet
-snippet garpdoc
+snippet classdoc
 /**
- * ${1:classname}
- * ${2:class description}
- *
- * @package Garp_${3:package}
- * @author  Harmen Janssen <harmen@grrr.nl>
+ * @package ${1:package}
+ * @author  `git config user.name` <`git config user.email`>
  */
  $0
 endsnippet
