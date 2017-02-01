@@ -64,7 +64,8 @@ endsnippet
 snippet construct
 /**
  * Class constructor
- * @return Void
+ *
+ * @return void
  */
 public function __construct(${1:params}) {
 	$0
@@ -91,6 +92,7 @@ endsnippet
 snippet getter "getter"
 /**
  * Get ${1:identifier}
+ *
  * @return ${2:type}
  */
 public function get${1/\w+\s*/\u$0/}() {
@@ -101,6 +103,7 @@ endsnippet
 snippet setter "setter"
 /**
  * Set ${1:identifier}
+ *
  * @param ${2:type} $$1
  * @return $this
  */
