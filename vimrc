@@ -45,14 +45,15 @@ endif
     Plugin 'digitaltoad/vim-pug'
 	Plugin 'evidens/vim-twig'
     Bundle 'dag/vim-fish'
-	Plugin 'jelera/vim-javascript-syntax'
-	Plugin 'pangloss/vim-javascript'
+    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'pangloss/vim-javascript'
     Plugin 'guns/vim-clojure-static'
     Plugin 'tpope/vim-fireplace'
 
 	Plugin 'tpope/vim-abolish'
 
     Plugin 'neomake/neomake'
+    Plugin 'janko-m/vim-test'
 
 	call vundle#end()
 
@@ -62,6 +63,7 @@ endif
 " Basic options {{{{
 	set modelines=0
 	set hidden
+	set mouse=n
 
 " }}}}
 " Mappings {{{{
@@ -234,6 +236,7 @@ endif
 
     colorscheme solarized
     call Dark()
+    call PinkCursor()
 
 	if has("gui_running")
 		"set guifont=CamingoCode:h13
@@ -499,8 +502,13 @@ endif
 	nnoremap <leader>n :NERDTreeToggle<cr>
 	nnoremap <leader>c :NERDTreeFind<cr>
 
+    " Test
+    nnoremap <leader>ts :TestSuite<cr>
+    nnoremap <leader>tl :TestLast<cr>
+    nnoremap <leader>tf :TestFile<cr>
+    nnoremap <leader>tn :TestNearest<cr>
+
 	" CtrlP
-	nnoremap <leader>t :CtrlP<cr>
 	" leader key + j to open CtrlP in buffer mode
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
 	let g:ctrlp_map = '<c-p>'
