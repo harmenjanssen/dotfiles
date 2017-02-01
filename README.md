@@ -19,13 +19,7 @@ My Vim setup uses Vundle, so grab that separately:
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-And run ```VundleInstall``` from Vim.
+And run `:VundleInstall` from Vim.
 
-Remember to run
-
-```
-cd ~/.vim/bundle/ctrlp-cmatcher/;
-./install.sh
-```
-
-to initiate the Ctrl-P cmatcher plugin. It makes Ctrl-P blazingly fast.
+*Note* some things in my vim setup have been reported problematic on vim 7.4.  
+Try to upgrade to the latest version, I'm maintaining vim via Homebrew and that seems to work fine.
