@@ -9,6 +9,8 @@
 --regex-javascript=/\/\/[ \t]*(TODO)[ \t]*\:*(.*)/\1/i,TODO/
 --regex-javascript=/\/\/[ \t]*(FIXME)[ \t]*\:*(.*)/\1/i,FIXME/
 
+--regex-php=/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i
+
 --langdef=less
 --langmap=less:.less
 --regex-less=/^[ \t&]*#([A-Za-z0-9_-]+)/\1/i,id,ids/

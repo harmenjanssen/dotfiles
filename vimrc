@@ -16,9 +16,6 @@ endif
 
 	Plugin 'gmarik/Vundle.vim'
 
-    "Plugin 'kana/vim-textobj-user'
-    "Plugin 'whatyouhide/vim-textobj-xmlattr'
-
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'SirVer/ultisnips'
 	Bundle 'rking/ag.vim'
@@ -137,10 +134,10 @@ endif
 " }}}}
 " Tabs, buffers, windows {{{{
 	" easier moving in tabs and windows
-	noremap <c-j> <c-w>j<c-w>_
-	noremap <c-k> <c-w>k<c-w>_
-	noremap <c-l> <c-w>l<c-w>_
-	noremap <c-h> <c-w>h<c-w>_
+	nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-L> <C-W><C-L>
+    nnoremap <C-H> <C-W><C-H>
 	" Use TAB to toggle buffers
 	nnoremap <tab> :b#<cr>
 
@@ -194,7 +191,7 @@ endif
 	set showmode
 	set showcmd
 
-	set number
+	set relativenumber
 	set scrolloff=3
 
 	" hide the mouse while typing
