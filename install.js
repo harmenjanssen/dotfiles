@@ -5,22 +5,21 @@ const fs = require('fs');
 const readline = require('readline');
 const exec = require('child_process').exec;
 
-let rl = readline.createInterface(process.stdin, process.stdout);
-let files = fs.readdirSync(__dirname)
+const rl = readline.createInterface(process.stdin, process.stdout);
+const files = fs.readdirSync(__dirname)
   .filter(file => !~EXCLUDED_FILES.indexOf(file));
 
 iterate(files, 0);
 
 // iterate recursively over files, allowing blocking prompt between files
 function iterate(files, index, overwrite) {
-  let file = files[index];
+  const file = files[index];
   if (undefined === file) {
-
     console.log('\nDone ☕️');
     console.log('Run osx_config.sh to configure OSX');
     process.exit(0);
   }
-  let target = process.env['HOME'] + '/.' + file;
+  const target = process.env['HOME'] + '/.' + file;
 
   // exception means file doesn't exist
   let fileExists = false;
@@ -53,7 +52,7 @@ function iterate(files, index, overwrite) {
 
 function linkFile(file) {
   console.log('linking file .' + file);
-  let target = process.env['HOME'] + '/.' + file;
+  const target = process.env['HOME'] + '/.' + file;
   // unlink the file preemptively, just catch errors for non-existent files
   rmFile(target);
   fs.symlinkSync(__dirname + '/' + file, target);
@@ -75,12 +74,12 @@ function rmFile(target) {
 // recursively remove directory
 function rmDir(path) {
   fs.readdirSync(path).forEach((file,index) => {
-      let curPath = path + "/" + file;
-      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+      const curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) {
           return rmDir(curPath);
       }
       fs.unlinkSync(curPath);
   });
   return fs.rmdirSync(path);
-};
+}
 
