@@ -357,6 +357,11 @@ endif
 " }}}}
 " Misc {{{{
 
+    augroup crontab
+        autocmd!
+        autocmd FileType crontab setlocal nobackup nowritebackup
+    augroup END
+
 	" Enter opens tag
 	augroup tag_navigation
 		autocmd!

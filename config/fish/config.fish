@@ -15,6 +15,8 @@ set -x -g TERM xterm-256color
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
+set -x -g EDITOR vim
+
 #source ~/.config/fish/nvm-wrapper/nvm.fish
 
 ssh-add ~/.ssh/id_dsa > /dev/null 2>&1
