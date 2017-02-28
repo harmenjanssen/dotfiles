@@ -3,7 +3,11 @@ function fish_prompt
     if test $CMD_DURATION
         if test $CMD_DURATION -gt 2000
             set secs (math "$CMD_DURATION / 1000")
-            ~/.config/fish/osx_notification $history[1] $status $secs
+            if test $TMUX
+                reattach-to-user-namespace ~/.config/fish/osx_notification $history[1] $status $secs
+            else
+                ~/.config/fish/osx_notification $history[1] $status $secs
+            end
         end
     end
 
@@ -34,6 +38,10 @@ function fish_prompt
 
     # Finally, the place where actual commands are put in
 	set_color normal
-	printf "\n⚡️  "
+	if test $TMUX
+	    printf "\n\$ "
+	else
+	    printf "\n⚡️  "
+	end
 
 end
