@@ -1,12 +1,13 @@
 function fish_prompt
     # Send notification for long-running tasks
+    set -l theStatus $status
     if test $CMD_DURATION
         if test $CMD_DURATION -gt 2000
             set secs (math "$CMD_DURATION / 1000")
             if test $TMUX
                 reattach-to-user-namespace ~/.config/fish/osx_notification $history[1] $status $secs
             else
-                ~/.config/fish/osx_notification $history[1] $status $secs
+                ~/.config/fish/osx_notification $history[1] $theStatus $secs
             end
         end
     end
