@@ -1,0 +1,7 @@
+#!/usr/bin/env osascript
+
+on run argv
+    tell application "iTerm2"
+        get background color of current session of current tab of current window
+    end tell
+end run

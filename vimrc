@@ -216,31 +216,34 @@ endif
 	endfunction
 
 	function! Dark()
-		if has("gui_running")
-			set background=dark
-		endif
-
-		call PinkCursor()
+		set background=dark
+		"call PinkCursor()
 	endfunction
 
 	function! Light()
-		if has("gui_running")
-			set background=light
-		endif
-
-		call PinkCursor()
+		set background=light
+		"call PinkCursor()
 	endfunction
 
+    function! Chomp(string)
+        return substitute(a:string, '\n\+$', '', '')
+    endfunction
+
     colorscheme solarized
-    call Dark()
-    call PinkCursor()
+    let profile = Chomp(system('/Users/harmen/.config/fish/get_profile'))
+    " Let current iTerm profile determine what background to use (unfortunately it's not possible to
+    " read the current profile at runtime, only which profile the window started with. This is why I
+    " use the somewhat less robust background color to guesstimate the profile.
+    if profile == "533, 7720, 9941"
+        set background=dark
+    else
+        set background=light
+    end
 
 	if has("gui_running")
-		"set guifont=CamingoCode:h13
 		set guifont=Fira\ Code:h13
         set macligatures
 		set linespace=5
-		"set fullscreen
 
 		" use dark background after 20:00
         if strftime("%H") >= 8 && strftime("%H") <= 20
@@ -248,8 +251,6 @@ endif
         else
             call Dark()
         endif
-		"call Dark()
-
 	endif
 
 	command! Dark call Dark()
@@ -275,7 +276,11 @@ endif
 	set expandtab
 
 	" Set indentation for js files
-	autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+	augroup javascript
+	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+        "autocmd FileType javascript set formatprg=prettier\ --stdin
+        "autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+    augroup END
 
 	augroup textwidth
 		autocmd!
