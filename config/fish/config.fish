@@ -1,5 +1,5 @@
 #set PATH  ~/.rbenv/shims /usr/local/opt/php55/bin ~/.node/bin /usr/local/bin ./vendor/bin $PATH
-set PATH  /usr/local/opt/php70/bin ~/.node/bin /usr/local/bin /usr/local/sbin ./vendor/bin ./node_modules/.bin $PATH
+set PATH  /usr/local/opt/php70/bin ~/.node/bin /usr/local/bin /usr/local/sbin ./vendor/bin ~/.composer/vendor/bin ./node_modules/.bin $PATH
 
 set -x -g APPLICATION_ENV development
 
@@ -25,5 +25,4 @@ set -gx RBENV_ROOT /usr/local/var/rbenv
 
 set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
-#source ~/.config/fish/functions/gpg-init.fish
-gpg-init
+#gpg-init
