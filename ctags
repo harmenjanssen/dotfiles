@@ -42,6 +42,8 @@
 
 --langmap=vim:+(vimrc)
 
+--php-kinds=cift
+
 --exclude=.git
 --exclude=.svn
 --exclude=.hg
