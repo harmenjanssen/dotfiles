@@ -33,8 +33,8 @@ endif
 	Plugin 'airblade/vim-gitgutter'
 
     " Colors
-	Plugin 'chriskempson/base16-vim'
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'morhetz/gruvbox'
 
 	" Languages
 	Plugin 'othree/html5.vim'
@@ -61,6 +61,7 @@ endif
 	set modelines=0
 	set hidden
 	set mouse=n
+	set ttyfast
 
 " }}}}
 " Mappings {{{{
@@ -278,8 +279,8 @@ endif
 	" Set indentation for js files
 	augroup javascript
 	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-        "autocmd FileType javascript set formatprg=prettier\ --stdin
-        "autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+        autocmd FileType javascript set formatprg=prettier\ --stdin
+        autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
     augroup END
 
 	augroup textwidth
@@ -572,6 +573,7 @@ endif
     " Neomake
     autocmd! BufWritePost * Neomake
     let g:neomake_php_phpcs_args_standard = "vendor/grrr-amsterdam/garp3/phpcs.xml"
+    let g:neomake_php_phpmd_args = ['%:p', 'text', 'codesize,design,unusedcode,naming,cleancode']
 " }}}}
 " Garp {{{{
 	" Auto-clear cache after editing .ini files
