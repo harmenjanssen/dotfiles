@@ -47,3 +47,5 @@
 	gpgsign = true
 [gpg]
 	program = gpg2
+[rebase]
+	autosquash = true
