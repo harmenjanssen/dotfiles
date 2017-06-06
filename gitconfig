@@ -30,6 +30,7 @@
 	dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
 	pop = stash pop
 	rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
+	ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
 [color]
 	ui = auto
 [mergetool]
