@@ -42,7 +42,12 @@ function fish_prompt
 	if test $TMUX
 	    printf "\n\$ "
 	else
-	    printf "\n⚡️  "
+        set -l background_jobs (jobs | wc -l)
+        if test $background_jobs -gt 0
+	        printf "\n👻  "
+	    else
+	        printf "\n⚡️  "
+	    end
 	end
 
 end
