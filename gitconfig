@@ -24,13 +24,22 @@
 	changelog = diff-tree --no-commit-id --name-only
 	lastchange = log -p --follow -n 1
 	tags = tag --sort=v:refname
-	track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
 	amend = commit --amend -C HEAD
 	ctags = !.git/hooks/ctags
 	dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
 	pop = stash pop
 	rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
 	ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
+	ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+    dl = "!git ll -1"
+    dlc = diff --cached HEAD^
+    alias = "!git config -l | grep alias | cut -c 7-"
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+	track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
+    publish = "!git push -u origin $(git branch-name)"
+    unpublish = "!git push origin :$(git branch-name)"
+    unstage = reset HEAD
 [color]
 	ui = auto
 [mergetool]
