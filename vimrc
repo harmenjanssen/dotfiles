@@ -268,6 +268,7 @@ endif
 	set copyindent
 	set preserveindent
 	set smartindent
+	set breakindent
 	set fileformat=unix
 	set textwidth=100
 	set colorcolumn=+1

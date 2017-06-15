@@ -1,5 +1,5 @@
 #set PATH  ~/.rbenv/shims /usr/local/opt/php55/bin ~/.node/bin /usr/local/bin ./vendor/bin $PATH
-set PATH  /usr/local/opt/php70/bin ./node_modules/.bin ~/.node/bin /usr/local/bin /usr/local/sbin ./vendor/bin ~/.composer/vendor/bin $PATH
+set PATH  /usr/local/bin /usr/local/sbin /usr/local/opt/php70/bin ./node_modules/.bin ~/.node/bin ./vendor/bin ~/.composer/vendor/bin $PATH
 
 set -x -g APPLICATION_ENV development
 
