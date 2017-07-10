@@ -21,7 +21,7 @@ endif
 	Bundle 'rking/ag.vim'
 	Plugin 'moll/vim-bbye'
 	Plugin 'scrooloose/nerdcommenter'
-	Plugin 'scrooloose/nerdtree'
+	"Plugin 'scrooloose/nerdtree'
 	Plugin 'tpope/vim-surround'
 	Plugin 'tpope/vim-repeat'
 	Plugin 'ervandew/supertab'
@@ -519,8 +519,8 @@ endif
 " Plugin configuration {{{{
 
 	" NERDTree
-	nnoremap <leader>n :NERDTreeToggle<cr>
-	nnoremap <leader>c :NERDTreeFind<cr>
+	"nnoremap <leader>n :NERDTreeToggle<cr>
+	"nnoremap <leader>c :NERDTreeFind<cr>
 
     " Test
     nnoremap <leader>ts :TestSuite<cr>
