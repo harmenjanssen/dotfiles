@@ -137,6 +137,8 @@ endif
     set timeoutlen=1000
     set ttimeoutlen=0
 
+    cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " }}}}
 " Tabs, buffers, windows {{{{
 	" easier moving in tabs and windows
