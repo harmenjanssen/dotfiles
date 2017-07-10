@@ -95,8 +95,8 @@ endif
 	nnoremap Y y$
 
 	" wrapped lines goes down/up to next row, rather than next line in file.
-	nnoremap j gj
-	nnoremap k gk
+	"nnoremap j gj
+	"nnoremap k gk
 
 	" Better mappings to move to start/end of line
 	noremap H ^
