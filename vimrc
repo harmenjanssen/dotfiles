@@ -52,6 +52,8 @@ endif
     Plugin 'neomake/neomake'
     Plugin 'janko-m/vim-test'
 
+    Plugin 'FooSoft/vim-argwrap'
+
 	call vundle#end()
 
 	filetype plugin indent on
@@ -131,6 +133,9 @@ endif
 	vnoremap if <esc>?function<cr>f{vi{
 	onoremap af :<c-u>execute "normal! ?function\r:nohlsearch\rvf{%"<cr>
 	onoremap if :<c-u>execute "normal! ?function\r:nohlsearch\rf{vi{"<cr>
+
+    set timeoutlen=1000
+    set ttimeoutlen=0
 
 " }}}}
 " Tabs, buffers, windows {{{{
@@ -322,6 +327,7 @@ endif
 		autocmd BufRead,BufNewFile *.cap setlocal filetype=ruby
 		autocmd BufRead,BufNewFile *.scss setlocal filetype=scss.css
 	  	autocmd BufRead,BufNewFile *.es6 setlocal filetype=javascript
+	  	autocmd BufRead,BufNewFile *.htm setlocal filetype=html.twig
 	augroup END
 
 " }}}}
@@ -567,7 +573,7 @@ endif
 	nnoremap <leader>bd :Bdelete<cr>
 
 	" Tagbar
-	nnoremap <leader>f :TagbarToggle<cr>
+	nnoremap <leader>f :TagbarToggle<cr>:setlocal relativenumber<cr>
 	let g:tagbar_autoclose = 1
 	let g:tagbar_autofocus = 1
 
@@ -578,6 +584,10 @@ endif
     autocmd! BufWritePost * Neomake
     let g:neomake_php_phpcs_args_standard = "vendor/grrr-amsterdam/garp3/phpcs.xml"
     let g:neomake_php_phpmd_args = ['%:p', 'text', 'codesize,design,unusedcode,naming,cleancode']
+
+    " Argwrap
+    nnoremap <silent> <leader>a :ArgWrap<CR>
+
 " }}}}
 " Garp {{{{
 	" Auto-clear cache after editing .ini files
