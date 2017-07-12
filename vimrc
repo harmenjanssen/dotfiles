@@ -445,6 +445,17 @@ endif
 	endfunction
 	noremap <Leader>r :call RenameFile()<cr>
 
+    " Inspired by https://gist.github.com/tpope/287147
+    augroup auto_alignment
+    	autocmd!
+    	" Automatically align PHP arrays when typing fat arrow in insert mode
+    	autocmd FileType php inoremap <silent> => =><Esc>:call <SID>align()<CR>A
+    augroup END
+
+    function! s:align()
+        Tabularize /=>
+    endfunction
+
 " }}}}
 " Plugin configuration {{{{
 
