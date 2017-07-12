@@ -403,7 +403,7 @@ endif
 
 	" return to last edit position when opening files
 	autocmd BufReadPost *
-	 \ if &ft =~ 'gitcommit' |
+	 \ if &ft != 'gitcommit' |
      \   if line("'\"") > 0 && line("'\"") <= line("$") |
      \     exe "normal! g`\"" |
      \   endif |
