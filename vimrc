@@ -1,6 +1,6 @@
 " VIMRC
 " @author Harmen Janssen
-" @link https://github.com/harmenjanssen/vimrc
+" @link https://github.com/harmenjanssen/dotfiles
 " ------------------------------------------------- "
 
 if &shell =~# 'fish$'
@@ -445,52 +445,6 @@ endif
 	endfunction
 	noremap <Leader>r :call RenameFile()<cr>
 
-	function! PhpLibraryTemplate(path)
-		let pos_from_lib=strridx(a:path, 'library') + strlen('library/')
-		let pos_of_dot=strridx(a:path, '.')-1
-		let path_from_lib=a:path[pos_from_lib : pos_of_dot]
-		let classname=join(split(path_from_lib, '/'), '_')
-		execute "normal! i<?php"
-		execute "normal! Goclass ".classname." {"
-		execute "normal! Go	"
-		execute "normal! Go}"
-		execute "normal! Gk"
-	endfunction
-
-	function! ModelConfigTemplate(path)
-		execute "0read ".expand("$HOME/.vim/templates/model_config.json")
-	endfunction
-
-	augroup templates
-		au!
-		" read in templates files
-		autocmd BufNewFile **/library/*.php :call PhpLibraryTemplate(expand('<afile>'))
-		autocmd BufNewFile **/models/config/*.json :call ModelConfigTemplate(expand('<afile>'))
-	augroup END
-
-	function! EditZendView()
-		" find first previous Action statement
-		let linenumber=line('.')
-		let match=0
-		while linenumber > 0
-			let line=getline(linenumber)
-			let match=matchstr(line, '\v\zs([a-z]+)\zeAction')
-			echom line
-			echom match
-			if !empty(match)
-				break
-			endif
-
-			let linenumber -= 1
-		endwhile
-
-		if !empty(match)
-			" :e views/scripts/<controller>/<action>.phtml
-		else
-			echo 'current action not found'
-		end
-	endfunction
-
 " }}}}
 " Plugin configuration {{{{
 
@@ -519,17 +473,8 @@ endif
     "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
     let g:ctrlp_match_func = {'match' : 'pymatcher#PyMatch' }
 
-	" Syntastic
-	" Use scss_lint for syntax checking
-	let g:syntastic_scss_checkers = ['scss_lint']
-	let g:syntastic_php_checkers = ['php']
-
-	" Ignore unrecognized html tags
-	let g:syntastic_html_tidy_ignore_errors = ['Unnecessary parent selector', 'proprietary attribute', 'missing </a>', 'trimming empty', 'is not recognized', 'discarding unexpected'  ]
-	let g:syntastic_php_ignore_errors = ['Line indented incorrectly']
-
 	" Tabularize
-	" mappings to common alignments
+	" Mappings to common alignments
 	nnoremap <leader>a= :Tabularize /=<cr>
 	vnoremap <leader>a= :Tabularize /=<cr>
 	nnoremap <leader>a: :Tabularize /:\zs<cr>
@@ -568,11 +513,6 @@ endif
 
 " }}}}
 " Garp {{{{
-	" Auto-clear cache after editing .ini files
-	"augroup garpini
-		"autocmd!
-		"autocmd BufWritePost *.ini !php garp/scripts/garp.php Cache clear --e=development
-	"augroup END
 
 	" Create snippets from selected text
 	function! s:get_visual_selection()
