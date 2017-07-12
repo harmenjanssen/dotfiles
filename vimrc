@@ -17,24 +17,27 @@ endif
 	Plugin 'gmarik/Vundle.vim'
 
 	Plugin 'tpope/vim-fugitive'
+	Plugin 'tpope/vim-surround'
+	Plugin 'tpope/vim-repeat'
+	Plugin 'tpope/vim-abolish'
+	Plugin 'tpope/vim-unimpaired'
 	Plugin 'SirVer/ultisnips'
 	Bundle 'rking/ag.vim'
 	Plugin 'moll/vim-bbye'
 	Plugin 'scrooloose/nerdcommenter'
-	"Plugin 'scrooloose/nerdtree'
-	Plugin 'tpope/vim-surround'
-	Plugin 'tpope/vim-repeat'
 	Plugin 'ervandew/supertab'
 	Plugin 'godlygeek/tabular'
 	Plugin 'majutsushi/tagbar'
-	Plugin 'tpope/vim-unimpaired'
+	Plugin 'airblade/vim-gitgutter'
+    Plugin 'neomake/neomake'
+    Plugin 'janko-m/vim-test'
+    Plugin 'FooSoft/vim-argwrap'
+
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'FelikZ/ctrlp-py-matcher'
-	Plugin 'airblade/vim-gitgutter'
 
     " Colors
 	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'morhetz/gruvbox'
 
 	" Languages
 	Plugin 'othree/html5.vim'
@@ -46,13 +49,8 @@ endif
     Plugin 'pangloss/vim-javascript'
     Plugin 'guns/vim-clojure-static'
     Plugin 'tpope/vim-fireplace'
-
-	Plugin 'tpope/vim-abolish'
-
-    Plugin 'neomake/neomake'
-    Plugin 'janko-m/vim-test'
-
-    Plugin 'FooSoft/vim-argwrap'
+    Plugin 'cakebaker/scss-syntax.vim'
+    Plugin 'hail2u/vim-css3-syntax'
 
 	call vundle#end()
 
@@ -327,7 +325,7 @@ endif
 		autocmd!
 		autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
 		autocmd BufRead,BufNewFile *.cap setlocal filetype=ruby
-		autocmd BufRead,BufNewFile *.scss setlocal filetype=scss.css
+        autocmd BufRead,BufNewFile *.scss setlocal filetype=scss.css
 	  	autocmd BufRead,BufNewFile *.es6 setlocal filetype=javascript
 	  	autocmd BufRead,BufNewFile *.htm setlocal filetype=html.twig
 	augroup END
@@ -410,28 +408,6 @@ endif
      \     exe "normal! g`\"" |
      \   endif |
      \ endif
-
-	" This function finds the config.rb
-	" file that's needed to compile by traversing up the tree.
-	function! CompileSass()
-		let cssDir = fnamemodify(bufname("%"), ":p:h")
-		let threshold = 20
-		let iterations = 0
-		while !filereadable(cssDir . '/config.rb')
-			let cssDir = cssDir . '/..'
-			" Do not loop forever
-			let iterations += 1
-			if iterations >=# threshold
-				return
-			endif
-		endwhile
-		execute "!compass compile " . cssDir . " -e production --boring > /dev/null"
-	endfunction
-
-	"augroup compass_compile
-		"autocmd!
-		"autocmd BufWritePost *.scss :call CompileSass()
-	"augroup END
 
 	" Execute php code in current buffer
 	function! ExecutePhp()
