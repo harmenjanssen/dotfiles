@@ -338,18 +338,18 @@ endif
 	vnoremap / /\v
 
 	" Keep search matches in the middle of the window
-	function! s:nice_next(cmd)
-  		let view = winsaveview()
-  		execute "normal! " . a:cmd
-  		if view.topline != winsaveview().topline
-    		normal! zz
-  		endif
-	endfunction
+	"function! s:nice_next(cmd)
+          "let view = winsaveview()
+          "execute "normal! " . a:cmd
+          "if view.topline != winsaveview().topline
+            "normal! zz
+          "endif
+	"endfunction
 
-	nnoremap <silent> n :call <SID>nice_next('n')<cr>
-	nnoremap <silent> N :call <SID>nice_next('N')<cr>
-	"nnoremap n nzzzv
-	"nnoremap N Nzzzv
+	"nnoremap <silent> n :call <SID>nice_next('n')<cr>
+	"nnoremap <silent> N :call <SID>nice_next('N')<cr>
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
 
 	nnoremap <leader><space> :noh<cr>
 
@@ -446,15 +446,15 @@ endif
 	noremap <Leader>r :call RenameFile()<cr>
 
     " Inspired by https://gist.github.com/tpope/287147
-    augroup auto_alignment
-    	autocmd!
-    	" Automatically align PHP arrays when typing fat arrow in insert mode
-    	autocmd FileType php inoremap <silent> => =><Esc>:call <SID>align()<CR>A
-    augroup END
+    "augroup auto_alignment
+        "autocmd!
+        "" Automatically align PHP arrays when typing fat arrow in insert mode
+        "autocmd FileType php inoremap <silent> => =><Esc>:call <SID>align()<CR>A
+    "augroup END
 
-    function! s:align()
-        Tabularize /=>
-    endfunction
+    "function! s:align()
+        "Tabularize /=>
+    "endfunction
 
 " }}}}
 " Plugin configuration {{{{
