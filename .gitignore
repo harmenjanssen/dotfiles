@@ -12,4 +12,4 @@ config/robomongo
 # Let's ignore it for now and pretend I'll look at it later.
 config/yarn
 
-.lein/repl-history
+lein/repl-history
