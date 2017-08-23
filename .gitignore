@@ -11,3 +11,5 @@ config/robomongo
 # those node_modules in version control.
 # Let's ignore it for now and pretend I'll look at it later.
 config/yarn
+
+.lein/repl-history
