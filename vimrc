@@ -198,6 +198,8 @@ endif
 	set showcmd
 
 	set relativenumber
+	set number
+	set numberwidth=2
 	set scrolloff=3
 
 	" hide the mouse while typing
