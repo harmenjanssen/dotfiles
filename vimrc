@@ -287,7 +287,7 @@ endif
 	" Set indentation for js files
 	augroup javascript
 	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-        autocmd FileType javascript set formatprg=prettier\ --stdin
+        autocmd FileType javascript set formatprg=prettier\ --print-width\ 100\ --stdin
         autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
     augroup END
 
