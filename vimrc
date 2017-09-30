@@ -365,7 +365,7 @@ endif
 	" The Silver Searcher
 	if executable('ag')
   		" Use ag over grep
-  		set grepprg=ag\ --nogroup\ --nocolor
+  		set grepprg=ag\ --nogroup\ --nocolor\ -U
 
 	endif
 
