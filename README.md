@@ -26,7 +26,7 @@ And run `:VundleInstall` from Vim.
 *Note* some things in my vim setup have been reported problematic on vim 7.4.  
 Try to upgrade to the latest version, I'm maintaining vim via Homebrew and that seems to work fine.
 
-## Brwfile
+## Brewfile
 
 I sorta manually try to remember to update the `Brewfile` from time to time.  
 Install all Brew dependencies by running 
