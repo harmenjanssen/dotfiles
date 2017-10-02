@@ -471,6 +471,11 @@ endif
     nnoremap <leader>tf :TestFile<cr>
     nnoremap <leader>tn :TestNearest<cr>
 
+    " Note: this should probably be conditionally set or whatever.
+    " Not sure how yet.
+    let test#javascript#mocha#options = '--compilers js:babel-core/register'
+
+
 	" CtrlP
 	" leader key + j to open CtrlP in buffer mode
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
