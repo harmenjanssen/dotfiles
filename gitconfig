@@ -20,6 +20,8 @@
 	st = status
 	br = branch
 	amend = commit --amend -C HEAD
+    fixup = commit --fixup
+    squash = commit --squash
     rh = reset --hard
 
     # Pretty logs and diffs
@@ -57,7 +59,7 @@
 [mergetool]
 	keepBackup = true
 [merge]
-	conflictstyle = diff3
+	;conflictstyle = diff3
 [rerere]
 	enabled = 1
 [init]
