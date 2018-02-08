@@ -288,7 +288,7 @@ endif
 	" Set indentation for js files
 	augroup javascript
 	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-        autocmd FileType javascript set formatprg=prettier\ --print-width\ 100\ --stdin
+        "autocmd FileType javascript set formatprg=prettier\ --print-width\ 100\ --stdin
         autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
     augroup END
 
@@ -493,7 +493,7 @@ endif
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
 	let g:ctrlp_map = '<c-p>'
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules'
+    let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules'
   	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 	let g:ctrlp_cmd = 'CtrlP'
