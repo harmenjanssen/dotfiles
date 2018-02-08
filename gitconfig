@@ -54,6 +54,8 @@
 	dump = cat-file -p
 	pop = stash pop
 
+    feature = "!f() { git checkout -b 'feature/'$(git config user.name | cut -d' ' -f1 | awk '{print tolower($0)}')'-'$1; }; f"
+
 [color]
 	ui = auto
 [mergetool]
