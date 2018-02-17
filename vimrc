@@ -36,6 +36,9 @@ endif
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'FelikZ/ctrlp-py-matcher'
 
+    Plugin 'tobyS/vmustache'
+    Bundle 'tobyS/pdv'
+
     " Colors
 	Plugin 'altercation/vim-colors-solarized'
     Plugin 'thiagoalessio/rainbow_levels.vim'
@@ -52,6 +55,7 @@ endif
     Plugin 'tpope/vim-fireplace'
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'StanAngeloff/php.vim'
 
 	call vundle#end()
 
@@ -119,13 +123,6 @@ endif
 
 	" Line completion
 	inoremap <c-l> <c-x><c-l>
-
-	" Delete into blackhole register to not fuck with the regular clipboard
-	nnoremap <Leader>d "_d
-	nnoremap <Leader>D "_D
-	nnoremap <Leader>C "_C
-	nnoremap <Leader>c "_c
-	nnoremap <Leader>x "_x
 
 	" experimental and not yet production-ready: a function text-object
 	vnoremap af <esc>?function<cr>vf{%
@@ -289,7 +286,7 @@ endif
 	augroup javascript
 	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
         "autocmd FileType javascript set formatprg=prettier\ --print-width\ 100\ --stdin
-        autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+        "autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
     augroup END
 
 	augroup textwidth
@@ -540,6 +537,10 @@ endif
 
     " Argwrap
     nnoremap <silent> <leader>a :ArgWrap<CR>
+
+    " PDV (PHP Documentor for Vim)
+    let g:pdv_template_dir = $HOME ."/.vim/ultisnips/pdv/"
+    nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 
 " }}}}
 " Garp {{{{
