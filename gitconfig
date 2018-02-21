@@ -56,6 +56,8 @@
 
     feature = "!f() { git checkout -b 'feature/'$(git config user.name | cut -d' ' -f1 | awk '{print tolower($0)}')'-'$1; }; f"
 
+    branches = for-each-ref --sort=-committerdate --format=\"%(align:1,20)%(color:blue)%(authordate:relative)%(end)%(align:1,30)%(color:red)%(authorname)%(end)%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+
 [color]
 	ui = auto
 [mergetool]
