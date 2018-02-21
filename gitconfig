@@ -76,3 +76,5 @@
 	program = gpg2
 [rebase]
 	autosquash = true
+[remote "origin"]
+	prune = true
