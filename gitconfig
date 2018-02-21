@@ -2,14 +2,17 @@
     name = Harmen Janssen
     email = harmen@grrr.nl
     signingkey = 680B7B08
+
 [core]
     autocrlf = input
     safecrlf = warn
     editor = vim
     fileMode = false
     excludesfile = ~/.gitignore
+
 [push]
     default = upstream
+
 [alias]
     # Typos
     cloen = clone
@@ -60,21 +63,36 @@
 
 [color]
     ui = auto
+
+[color "status"]
+	added = yellow
+	changed = "white yellow"
+    untracked = "white yellow"
+    branch = "white normal bold"
+
 [mergetool]
     keepBackup = true
+
 [merge]
     ;conflictstyle = diff3
+
 [rerere]
     enabled = 1
+
 [init]
     templatedir = ~/.git_template
+
 [interactive]
     diffFilter = diff-highlight
+
 [commit]
     gpgsign = true
+
 [gpg]
     program = gpg2
+
 [rebase]
     autosquash = true
+
 [remote "origin"]
     prune = true
