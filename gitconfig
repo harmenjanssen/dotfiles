@@ -1,80 +1,80 @@
 [user]
-	name = Harmen Janssen
-	email = harmen@grrr.nl
-	signingkey = 680B7B08
+    name = Harmen Janssen
+    email = harmen@grrr.nl
+    signingkey = 680B7B08
 [core]
-	autocrlf = input
-	safecrlf = warn
-	editor = vim
-	fileMode = false
-	excludesfile = ~/.gitignore
+    autocrlf = input
+    safecrlf = warn
+    editor = vim
+    fileMode = false
+    excludesfile = ~/.gitignore
 [push]
-	default = upstream
+    default = upstream
 [alias]
     # Typos
-	cloen = clone
+    cloen = clone
 
     # Shortcuts
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
-	amend = commit --amend -C HEAD
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    amend = commit --amend -C HEAD
     fixup = commit --fixup
     squash = commit --squash
     rh = reset --hard
 
     # Pretty logs and diffs
     l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ai%Creset'
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --numstat
-	lastchange = log -p --follow -n 1
-	changelog = diff-tree --no-commit-id --name-only
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --numstat
+    lastchange = log -p --follow -n 1
+    changelog = diff-tree --no-commit-id --name-only
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
-	dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
+    dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
 
     # Branches, publishing, tracking, rebasing
     branch-name = "!git rev-parse --abbrev-ref HEAD"
-	track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
+    track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
     publish = "!git push -u origin $(git branch-name)"
     unpublish = "!git push origin :$(git branch-name)"
     unstage = reset HEAD
-	ours = "!f() { git co --ours $@ && git add $@; }; f"
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
-	rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
-	ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
+    rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
+    ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
 
     # Misc
     alias = "!git config -l | grep alias | cut -c 7-"
-	tags = tag --sort=v:refname
-	ctags = !.git/hooks/ctags
-	type = cat-file -t
-	dump = cat-file -p
-	pop = stash pop
+    tags = tag --sort=v:refname
+    ctags = !.git/hooks/ctags
+    type = cat-file -t
+    dump = cat-file -p
+    pop = stash pop
 
     feature = "!f() { git checkout -b 'feature/'$(git config user.name | cut -d' ' -f1 | awk '{print tolower($0)}')'-'$1; }; f"
 
     branches = for-each-ref --sort=-committerdate --format=\"%(align:1,20)%(color:blue)%(authordate:relative)%(end)%(align:1,30)%(color:red)%(authorname)%(end)%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 
 [color]
-	ui = auto
+    ui = auto
 [mergetool]
-	keepBackup = true
+    keepBackup = true
 [merge]
-	;conflictstyle = diff3
+    ;conflictstyle = diff3
 [rerere]
-	enabled = 1
+    enabled = 1
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
 [interactive]
-	diffFilter = diff-highlight
+    diffFilter = diff-highlight
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = gpg2
+    program = gpg2
 [rebase]
-	autosquash = true
+    autosquash = true
 [remote "origin"]
-	prune = true
+    prune = true
