@@ -1,3 +1,3 @@
 function gc
-	git commit $argv
+	git commit --verbose $argv
 end
