@@ -56,6 +56,7 @@ endif
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'hail2u/vim-css3-syntax'
     Plugin 'StanAngeloff/php.vim'
+    Plugin 'purescript-contrib/purescript-vim'
 
 	call vundle#end()
 
