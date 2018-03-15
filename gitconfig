@@ -52,12 +52,14 @@
     # Misc
     alias = "!git config -l | grep alias | cut -c 7-"
     tags = tag --sort=v:refname
+    tt = "!git tags | tail"
     ctags = !.git/hooks/ctags
     type = cat-file -t
     dump = cat-file -p
     pop = stash pop
 
     feature = "!f() { git checkout -b 'feature/'$(git config user.name | cut -d' ' -f1 | awk '{print tolower($0)}')'-'$1; }; f"
+    hotfix = "!f() { [ x$# != x2 ]&&echo "Two arguments required!" >&2 || git checkout -b 'hotfix/'$(git config user.name | cut -d' ' -f1 | awk '{print tolower($0)}')'-'$1 $2; }; f"
 
     branches = for-each-ref --sort=-committerdate --format=\"%(align:1,20)%(color:blue)%(authordate:relative)%(end)%(align:1,30)%(color:red)%(authorname)%(end)%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 
