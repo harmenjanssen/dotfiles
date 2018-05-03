@@ -48,6 +48,7 @@
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
     rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
     ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
+    rename = "branch -m"
 
     # Misc
     alias = "!git config -l | grep alias | cut -c 7-"
