@@ -13,3 +13,4 @@ config/robomongo
 config/yarn
 
 lein/repl-history
+psysh_history

@@ -483,8 +483,10 @@ endif
 
     " Note: this should probably be conditionally set or whatever.
     " Not sure how yet.
-    let test#javascript#mocha#options = '--compilers js:babel-core/register'
+    "let test#javascript#mocha#options = '--compilers js:babel-core/register'
 
+    " TODO: figure out a way to make this conditional
+    let g:test#php#phpunit#executable = "docker exec -it `basename $PWD`_web_1 phpunit"
 
 	" CtrlP
 	" leader key + j to open CtrlP in buffer mode
