@@ -36,14 +36,13 @@ endif
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'FelikZ/ctrlp-py-matcher'
 
-    Plugin 'tobyS/vmustache'
-    Bundle 'tobyS/pdv'
-
     " Colors
 	Plugin 'altercation/vim-colors-solarized'
     Plugin 'thiagoalessio/rainbow_levels.vim'
 
 	" Languages
+    Plugin 'tobyS/vmustache'
+    Bundle 'tobyS/pdv'
 	Plugin 'othree/html5.vim'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'digitaltoad/vim-pug'
@@ -57,6 +56,9 @@ endif
     Plugin 'hail2u/vim-css3-syntax'
     Plugin 'StanAngeloff/php.vim'
     Plugin 'purescript-contrib/purescript-vim'
+
+    Plugin 'shawncplus/phpcomplete.vim'
+    Plugin 'adoy/vim-php-refactoring-toolbox'
 
 	call vundle#end()
 
@@ -476,6 +478,11 @@ endif
     \{'ctermfg': 7, 'guifg': '#586e75'}]
 
     " Test
+    function! TestEdit()
+        execute ":e tests/" . expand('%:r') . "Test." . expand('%:e')
+    endfunction
+
+    nnoremap <leader>te :call TestEdit()<cr>
     nnoremap <leader>ts :TestSuite<cr>
     nnoremap <leader>tl :TestLast<cr>
     nnoremap <leader>tf :TestFile<cr>
@@ -493,13 +500,13 @@ endif
 	noremap <silent> <leader>j :CtrlPBuffer<CR>
 	let g:ctrlp_map = '<c-p>'
 
-    let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules'
+    let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules --ignore-dir clean_slate'
   	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 	let g:ctrlp_cmd = 'CtrlP'
 	let g:ctrlp_working_path_mode = ''
 	let g:ctrlp_max_files = 0
-	let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
+	let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|clean_slate'
     "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
     let g:ctrlp_match_func = {'match' : 'pymatcher#PyMatch' }
 
