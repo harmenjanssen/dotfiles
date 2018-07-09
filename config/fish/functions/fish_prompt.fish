@@ -44,9 +44,9 @@ function fish_prompt
 	else
         set -l background_jobs (jobs | wc -l)
         if test $background_jobs -gt 0
-	        printf "\n👻  "
+	        printf "\n👻 "
 	    else
-	        printf "\n⚡️  "
+	        printf "\n⚡️ "
 	    end
 	end
 
