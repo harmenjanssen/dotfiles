@@ -243,7 +243,7 @@ endif
     " Let current iTerm profile determine what background to use (unfortunately it's not possible to
     " read the current profile at runtime, only which profile the window started with. This is why I
     " use the somewhat less robust background color to guesstimate the profile.
-    if profile == "533, 7720, 9941"
+    if profile == "608, 8291, 10465"
         set background=dark
     else
         set background=light
@@ -493,7 +493,9 @@ endif
     "let test#javascript#mocha#options = '--compilers js:babel-core/register'
 
     " TODO: figure out a way to make this conditional
-    let g:test#php#phpunit#executable = "docker exec -it `basename $PWD`_web_1 phpunit"
+    if (filereadable('docker-compose.yml'))
+        let g:test#php#phpunit#executable = "docker exec -it `basename $PWD`_web_1 phpunit"
+    endif
 
 	" CtrlP
 	" leader key + j to open CtrlP in buffer mode
