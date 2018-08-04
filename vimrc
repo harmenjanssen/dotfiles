@@ -32,6 +32,7 @@ endif
     Plugin 'neomake/neomake'
     Plugin 'janko-m/vim-test'
     Plugin 'FooSoft/vim-argwrap'
+    Plugin 'ludovicchabant/vim-gutentags'
 
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'FelikZ/ctrlp-py-matcher'
@@ -527,6 +528,13 @@ endif
 	let g:UltiSnipsJumpForwardTrigger="<tab>"
 	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+    " Disable UltiSnips AutoTrigger to gain perf
+    " see https://github.com/SirVer/ultisnips/issues/593
+    augroup ultisnips_no_auto_expansion
+        au!
+        au VimEnter * au! UltiSnips_AutoTrigger
+    augroup END
+
 	" Supertab
 	 "let g:SuperTabDefaultCompletionType = "context"
 	" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -541,6 +549,10 @@ endif
 
     " Markdown
     let g:vim_markdown_folding_disabled = 1
+
+    " Gutentags
+    let g:gutentags_ctags_tagfile = ".git/tags"
+    let g:gutentags_ctags_extra_args = ["--tag-relative"]
 
     " Neomake
     autocmd! BufWritePost * Neomake
