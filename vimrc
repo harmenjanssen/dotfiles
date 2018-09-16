@@ -493,7 +493,6 @@ endif
     " Not sure how yet.
     "let test#javascript#mocha#options = '--compilers js:babel-core/register'
 
-    " TODO: figure out a way to make this conditional
     if (filereadable('docker-compose.yml'))
         let g:test#php#phpunit#executable = "docker exec -it `basename $PWD`_web_1 phpunit"
     endif

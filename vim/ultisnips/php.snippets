@@ -164,9 +164,10 @@ snippet /**
 endsnippet
 snippet classdoc
 /**
- * @package ${1:package}
+ * @package `php -r "echo ucfirst(basename(getcwd()));"`
  * @author  `git config user.name` <`git config user.email`>
  */
+$0
 endsnippet
 snippet bm "bindModel" i
 bindModel(${1:model}${2:, $options})$0
