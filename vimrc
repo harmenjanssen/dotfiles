@@ -25,27 +25,21 @@ endif
 	Bundle 'rking/ag.vim'
 	Plugin 'moll/vim-bbye'
 	Plugin 'scrooloose/nerdcommenter'
-	Plugin 'ervandew/supertab'
 	Plugin 'godlygeek/tabular'
-	Plugin 'majutsushi/tagbar'
 	Plugin 'airblade/vim-gitgutter'
-    Plugin 'neomake/neomake'
     Plugin 'janko-m/vim-test'
     Plugin 'FooSoft/vim-argwrap'
     Plugin 'ludovicchabant/vim-gutentags'
 
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'FelikZ/ctrlp-py-matcher'
+    Plugin 'junegunn/fzf.vim'
 
     " Colors
 	Plugin 'altercation/vim-colors-solarized'
-    Plugin 'thiagoalessio/rainbow_levels.vim'
 
 	" Languages
     Plugin 'tobyS/vmustache'
     Bundle 'tobyS/pdv'
 	Plugin 'othree/html5.vim'
-    Plugin 'plasticboy/vim-markdown'
     Plugin 'digitaltoad/vim-pug'
 	Plugin 'evidens/vim-twig'
     Bundle 'dag/vim-fish'
@@ -146,8 +140,11 @@ endif
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
-	" Use TAB to toggle buffers
-	nnoremap <tab> :b#<cr>
+	" Use BACKSPACE to toggle buffers
+	nnoremap <BS> <C-^>
+
+    " List open buffers
+    nnoremap § :ls<cr>:b
 
 	nnoremap <leader>x :Explore<cr>
 
@@ -193,15 +190,16 @@ endif
 	set backspace=2
 
 	" status line
-	set statusline=%f\ %y\ %m\ %r\ Line:\ %l/%L\ Col:\ %c\ Buf:\ #%n
+	" set statusline=%f\ %y\ %m\ %r\ Line:\ %l/%L\ Col:\ %c\ Buf:\ #%n
+	set statusline=%f\ %y\ %m\ %r
 	set laststatus=2
 	set cmdheight=2
 	set showmode
 	set showcmd
 
-	set relativenumber
-	set number
-	set numberwidth=2
+	"set relativenumber
+	"set number
+	"set numberwidth=2
 	set scrolloff=3
 
 	" hide the mouse while typing
@@ -374,6 +372,8 @@ endif
 	" bind K to grep word under cursor
 	nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+    autocmd QuickFixCmdPost *grep* cwindow
+
 " }}}}
 " Misc {{{{
 
@@ -467,17 +467,6 @@ endif
 	"nnoremap <leader>n :NERDTreeToggle<cr>
 	"nnoremap <leader>c :NERDTreeFind<cr>
 
-    " RainbowLevels
-    let g:rainbow_levels = [
-    \{'ctermfg': 2, 'guifg': '#859900'},
-    \{'ctermfg': 6, 'guifg': '#2aa198'},
-    \{'ctermfg': 4, 'guifg': '#268bd2'},
-    \{'ctermfg': 5, 'guifg': '#6c71c4'},
-    \{'ctermfg': 1, 'guifg': '#dc322f'},
-    \{'ctermfg': 3, 'guifg': '#b58900'},
-    \{'ctermfg': 8, 'guifg': '#839496'},
-    \{'ctermfg': 7, 'guifg': '#586e75'}]
-
     " Test
     function! TestEdit()
         execute ":e tests/" . expand('%:r') . "Test." . expand('%:e')
@@ -489,6 +478,11 @@ endif
     nnoremap <leader>tf :TestFile<cr>
     nnoremap <leader>tn :TestNearest<cr>
 
+    " FZF
+    set rtp+=/usr/local/opt/fzf
+    nnoremap <c-p> :Files<cr>
+    nnoremap <leader>f :BTags<cr>
+
     " Note: this should probably be conditionally set or whatever.
     " Not sure how yet.
     "let test#javascript#mocha#options = '--compilers js:babel-core/register'
@@ -499,18 +493,18 @@ endif
 
 	" CtrlP
 	" leader key + j to open CtrlP in buffer mode
-	noremap <silent> <leader>j :CtrlPBuffer<CR>
-	let g:ctrlp_map = '<c-p>'
+	"noremap <silent> <leader>j :CtrlPBuffer<CR>
+	"let g:ctrlp_map = '<c-p>'
 
-    let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules --ignore-dir clean_slate'
-  	" ag is fast enough that CtrlP doesn't need to cache
-	let g:ctrlp_use_caching = 0
-	let g:ctrlp_cmd = 'CtrlP'
-	let g:ctrlp_working_path_mode = ''
-	let g:ctrlp_max_files = 0
-	let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|clean_slate'
-    "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-    let g:ctrlp_match_func = {'match' : 'pymatcher#PyMatch' }
+    "let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g "" -U --ignore-dir bower_components --ignore-dir node_modules --ignore-dir clean_slate'
+      "" ag is fast enough that CtrlP doesn't need to cache
+	"let g:ctrlp_use_caching = 0
+	"let g:ctrlp_cmd = 'CtrlP'
+	"let g:ctrlp_working_path_mode = ''
+	"let g:ctrlp_max_files = 0
+	"let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|clean_slate'
+    ""let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+    "let g:ctrlp_match_func = {'match' : 'pymatcher#PyMatch' }
 
 	" Tabularize
 	" Mappings to common alignments
@@ -538,13 +532,17 @@ endif
 	 "let g:SuperTabDefaultCompletionType = "context"
 	" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
+    " GitGutter
+    "let g:gitgutter_signs = 0
+    "let g:gitgutter_highlight_lines = 1
+
 	" Bbye
 	nnoremap <leader>bd :Bdelete<cr>
 
 	" Tagbar
-	nnoremap <leader>f :TagbarToggle<cr>:setlocal relativenumber<cr>
-	let g:tagbar_autoclose = 1
-	let g:tagbar_autofocus = 1
+	"nnoremap <leader>f :TagbarToggle<cr>:setlocal relativenumber<cr>
+	"let g:tagbar_autoclose = 1
+	"let g:tagbar_autofocus = 1
 
     " Markdown
     let g:vim_markdown_folding_disabled = 1
@@ -552,11 +550,6 @@ endif
     " Gutentags
     let g:gutentags_ctags_tagfile = ".git/tags"
     let g:gutentags_ctags_extra_args = ["--tag-relative"]
-
-    " Neomake
-    autocmd! BufWritePost * Neomake
-    let g:neomake_php_phpcs_args_standard = "vendor/grrr-amsterdam/garp3/phpcs.xml"
-    let g:neomake_php_phpmd_args = ['%:p', 'text', 'codesize,design,unusedcode,naming,cleancode']
 
     " Argwrap
     nnoremap <silent> <leader>a :ArgWrap<CR>
