@@ -30,11 +30,13 @@ endif
     Plugin 'janko-m/vim-test'
     Plugin 'FooSoft/vim-argwrap'
     Plugin 'ludovicchabant/vim-gutentags'
+    Plugin 'whatyouhide/vim-lengthmatters'
 
     Plugin 'junegunn/fzf.vim'
 
     " Colors
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'morhetz/gruvbox'
 
 	" Languages
     Plugin 'tobyS/vmustache'
@@ -65,6 +67,7 @@ endif
 	set hidden
 	set mouse=n
 	set ttyfast
+    set complete=.,b,u,]
 
 " }}}}
 " Mappings {{{{
@@ -132,6 +135,8 @@ endif
     set ttimeoutlen=0
 
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+    inoremap <Tab> <c-p>
 
 " }}}}
 " Tabs, buffers, windows {{{{
@@ -213,6 +218,7 @@ endif
 	set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 	set guioptions=Ac
+    set termguicolors
 
 	" invisibles
 	set listchars=tab:·\ ,eol:¬
@@ -225,24 +231,25 @@ endif
 
 	function! Dark()
 		set background=dark
-		"call PinkCursor()
+        call PinkCursor()
 	endfunction
 
 	function! Light()
 		set background=light
-		"call PinkCursor()
+        call PinkCursor()
 	endfunction
 
     function! Chomp(string)
         return substitute(a:string, '\n\+$', '', '')
     endfunction
 
-    colorscheme solarized
+    "colorscheme solarized
+    colorscheme gruvbox
     let profile = Chomp(system('/Users/harmen/.config/fish/get_profile'))
     " Let current iTerm profile determine what background to use (unfortunately it's not possible to
     " read the current profile at runtime, only which profile the window started with. This is why I
     " use the somewhat less robust background color to guesstimate the profile.
-    if profile == "608, 8291, 10465"
+    if profile == "7706, 7706, 7706"
         set background=dark
     else
         set background=light
@@ -278,7 +285,7 @@ endif
 	set breakindent
 	set fileformat=unix
 	set textwidth=100
-	set colorcolumn=+1
+    set colorcolumn=0
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
@@ -479,6 +486,7 @@ endif
     nnoremap <leader>tn :TestNearest<cr>
 
     " FZF
+    let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
     set rtp+=/usr/local/opt/fzf
     nnoremap <c-p> :Files<cr>
     nnoremap <leader>f :BTags<cr>
