@@ -485,6 +485,12 @@ endif
     nnoremap <leader>tf :TestFile<cr>
     nnoremap <leader>tn :TestNearest<cr>
 
+    " LengthMatters
+    "let g:lengthmatters#highlight = 'ctermfg=red ctermbg=235'
+    let g:lengthmatters_excluded = ['html', 'gitcommit', 'markdown', 'json', 'xml', 'text']
+    call lengthmatters#highlight('ctermbg=235 ctermfg=red')
+    "call lengthmatters#highlight_link_to('ColorColumn')
+
     " FZF
     let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
     set rtp+=/usr/local/opt/fzf
