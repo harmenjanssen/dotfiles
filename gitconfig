@@ -49,7 +49,7 @@
     rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
     ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
     rename = "branch -m"
-    delete = "!f() { [ $(git log --left-right --oneline --cherry-pick $1... | sed -n -e '/^</p' | wc -l) -gt 0 ] && git branch -d $1 || git branch -D $1; }; f"
+    delete = "!f() { if [ $(git log --left-right --oneline --cherry-pick $1... | sed -n -e '/^</p' | wc -l) -gt 0 ]; then git branch -d $1; else git branch -D $1; fi }; f"
 
     # Misc
     alias = "!git config -l | grep alias | cut -c 7-"
