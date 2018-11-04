@@ -39,15 +39,19 @@ function fish_prompt
 
     # Finally, the place where actual commands are put in
 	set_color normal
-	if test $TMUX
-	    printf "\n\$ "
-	else
-        set -l background_jobs (jobs | wc -l)
+    set -l background_jobs (jobs | wc -l)
+	#if test $TMUX
         if test $background_jobs -gt 0
-	        printf "\n👻 "
+	        printf "\n\\ "
 	    else
-	        printf "\n⚡️ "
+	        printf "\n\$> "
 	    end
-	end
+	#else
+        #if test $background_jobs -gt 0
+			#printf "\n👻 "
+		#else
+			#printf "\n⚡️ "
+		#end
+	#end
 
 end
