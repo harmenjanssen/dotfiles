@@ -136,8 +136,6 @@ endif
 
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-    inoremap <Tab> <c-p>
-
 " }}}}
 " Tabs, buffers, windows {{{{
 	" easier moving in tabs and windows
@@ -487,12 +485,12 @@ endif
 
     " LengthMatters
     "let g:lengthmatters#highlight = 'ctermfg=red ctermbg=235'
-    let g:lengthmatters_excluded = ['html', 'gitcommit', 'markdown', 'json', 'xml', 'text']
+    let g:lengthmatters_excluded = ['html', 'gitcommit', 'markdown', 'json', 'xml', 'text', 'html.twig', 'qf']
     call lengthmatters#highlight('ctermbg=235 ctermfg=red')
     "call lengthmatters#highlight_link_to('ColorColumn')
 
     " FZF
-    let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
+    "let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
     set rtp+=/usr/local/opt/fzf
     nnoremap <c-p> :Files<cr>
     nnoremap <leader>f :BTags<cr>
