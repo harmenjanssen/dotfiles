@@ -53,6 +53,8 @@ endif
     Plugin 'hail2u/vim-css3-syntax'
     Plugin 'StanAngeloff/php.vim'
     Plugin 'purescript-contrib/purescript-vim'
+    Bundle 'git://github.com/urso/haskell_syntax.vim.git'
+    Plugin 'mustache/vim-mustache-handlebars'
 
     Plugin 'shawncplus/phpcomplete.vim'
     Plugin 'adoy/vim-php-refactoring-toolbox'
@@ -204,6 +206,9 @@ endif
 	"set number
 	"set numberwidth=2
 	set scrolloff=3
+
+    " don't redraw the screen when running macros
+    set lazyredraw
 
 	" hide the mouse while typing
 	set mousehide
