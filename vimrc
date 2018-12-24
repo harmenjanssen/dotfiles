@@ -480,8 +480,14 @@ endif
 	"nnoremap <leader>n :NERDTreeToggle<cr>
 	"nnoremap <leader>c :NERDTreeFind<cr>
 
+    function! GoyoOpen()
+        if !exists('t:goyo_master')
+            execute 'Goyo'
+        endif
+    endfunction
+
     " Notational FZF
-    nnoremap <C-n> :Goyo!<cr>:<C-u>NV<cr>
+    nnoremap <C-n> :call GoyoOpen()<cr>:NV<cr>
     let g:nv_preview_direction = 'right'
     let g:nv_create_note_window = 'edit'
     let g:nv_search_paths = ['~/Dropbox/notational-velocity']
