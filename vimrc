@@ -491,6 +491,7 @@ endif
     let g:nv_preview_direction = 'right'
     let g:nv_create_note_window = 'edit'
     let g:nv_search_paths = ['~/Dropbox/notational-velocity']
+    let g:nv_use_short_pathnames = 1
 
     " Test
     function! TestEdit()
