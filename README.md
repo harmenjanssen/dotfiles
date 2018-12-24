@@ -37,3 +37,15 @@ brew bundle
 ```
 
 in the dotfiles folder.
+
+
+## Global Yarn packages
+
+A handful of useful npm packages is installed globally using Yarn.
+The `yarn.lock` file is in this repository and all packages within can be installed using 
+
+```
+yarn global upgrade
+```
+
+(This will also upgrade them to the latest version but I have yet to find a way to just install them)
