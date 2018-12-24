@@ -6,11 +6,7 @@ fishd.*
 fish_read_history
 config/configstore
 config/robomongo
-
-# Not sure if I want to ignore config/yarn, actually, but I definitely don't want to include all
-# those node_modules in version control.
-# Let's ignore it for now and pretend I'll look at it later.
-config/yarn
+config/yarn/global/node_modules
 
 lein/repl-history
 psysh_history
