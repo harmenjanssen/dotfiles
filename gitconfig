@@ -1,7 +1,7 @@
 [user]
     name = Harmen Janssen
     email = harmen@grrr.nl
-    signingkey = 680B7B08
+    signingkey = 736126C1C0C200C8
 
 [core]
     autocrlf = input
