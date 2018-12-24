@@ -33,6 +33,8 @@ endif
     Plugin 'whatyouhide/vim-lengthmatters'
 
     Plugin 'junegunn/fzf.vim'
+    Plugin 'alok/notational-fzf-vim'
+    Plugin 'junegunn/goyo.vim'
 
     " Colors
 	"Plugin 'altercation/vim-colors-solarized'
@@ -477,6 +479,12 @@ endif
 	" NERDTree
 	"nnoremap <leader>n :NERDTreeToggle<cr>
 	"nnoremap <leader>c :NERDTreeFind<cr>
+
+    " Notational FZF
+    nnoremap <C-n> :Goyo!<cr>:<C-u>NV<cr>
+    let g:nv_preview_direction = 'right'
+    let g:nv_create_note_window = 'edit'
+    let g:nv_search_paths = ['~/Dropbox/notational-velocity']
 
     " Test
     function! TestEdit()
