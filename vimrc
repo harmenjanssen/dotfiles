@@ -35,7 +35,8 @@ endif
     Plugin 'junegunn/fzf.vim'
 
     " Colors
-	Plugin 'altercation/vim-colors-solarized'
+	"Plugin 'altercation/vim-colors-solarized'
+	Plugin 'lifepillar/vim-solarized8'
 	Plugin 'morhetz/gruvbox'
 
 	" Languages
@@ -188,7 +189,6 @@ endif
 	set encoding=utf-8
 	set splitbelow
 	set splitright
-	set visualbell
 	" allow backspacing over indent, eol, and the start of an insert
 	set backspace=2
 
@@ -241,13 +241,14 @@ endif
         return substitute(a:string, '\n\+$', '', '')
     endfunction
 
-    "colorscheme solarized
-    colorscheme gruvbox
+    let g:solarized_termcolors=256
+    colorscheme solarized8
+
     let profile = Chomp(system('/Users/harmen/.config/fish/get_profile'))
     " Let current iTerm profile determine what background to use (unfortunately it's not possible to
     " read the current profile at runtime, only which profile the window started with. This is why I
     " use the somewhat less robust background color to guesstimate the profile.
-    if profile == "7706, 7706, 7706"
+    if profile == "608, 8291, 10465"
         set background=dark
     else
         set background=light
