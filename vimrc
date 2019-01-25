@@ -30,14 +30,12 @@ endif
     Plugin 'janko-m/vim-test'
     Plugin 'FooSoft/vim-argwrap'
     Plugin 'ludovicchabant/vim-gutentags'
-    Plugin 'whatyouhide/vim-lengthmatters'
 
     Plugin 'junegunn/fzf.vim'
     Plugin 'alok/notational-fzf-vim'
     Plugin 'junegunn/goyo.vim'
 
     " Colors
-	"Plugin 'altercation/vim-colors-solarized'
 	Plugin 'lifepillar/vim-solarized8'
 	Plugin 'morhetz/gruvbox'
 
@@ -61,6 +59,9 @@ endif
 
     Plugin 'shawncplus/phpcomplete.vim'
     Plugin 'adoy/vim-php-refactoring-toolbox'
+
+    Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'christoomey/vim-tmux-runner'
 
 	call vundle#end()
 
@@ -291,7 +292,7 @@ endif
 	set breakindent
 	set fileformat=unix
 	set textwidth=100
-    set colorcolumn=0
+    set colorcolumn=+0
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
@@ -504,24 +505,19 @@ endif
     nnoremap <leader>tf :TestFile<cr>
     nnoremap <leader>tn :TestNearest<cr>
 
-    " LengthMatters
-    "let g:lengthmatters#highlight = 'ctermfg=red ctermbg=235'
-    let g:lengthmatters_excluded = ['html', 'gitcommit', 'markdown', 'json', 'xml', 'text', 'html.twig', 'qf']
-    call lengthmatters#highlight('ctermbg=235 ctermfg=red')
-    "call lengthmatters#highlight_link_to('ColorColumn')
-
     " FZF
     "let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
     set rtp+=/usr/local/opt/fzf
-    nnoremap <c-p> :Files<cr>
+    nnoremap <c-p> :GFiles<cr>
     nnoremap <leader>f :BTags<cr>
 
     " Note: this should probably be conditionally set or whatever.
     " Not sure how yet.
     "let test#javascript#mocha#options = '--compilers js:babel-core/register'
 
+    let test#strategy = "vtr"
     if (filereadable('docker-compose.yml'))
-        let g:test#php#phpunit#executable = "docker exec -it `basename $PWD`_web_1 phpunit"
+        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_web_1 phpunit"
     endif
 
 	" CtrlP
@@ -591,51 +587,4 @@ endif
     let g:pdv_template_dir = $HOME ."/.vim/ultisnips/pdv/"
     nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 
-" }}}}
-" Garp {{{{
-
-	" Create snippets from selected text
-	function! s:get_visual_selection()
-  		" Why is this not a built-in Vim script function?!
-  		let [lnum1, col1] = getpos("'<")[1:2]
-  		let [lnum2, col2] = getpos("'>")[1:2]
-  		let lines = getline(lnum1, lnum2)
-  		let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-  		let lines[0] = lines[0][col1 - 1:]
-  		return join(lines, "\n")
-	endfunction
-
-	function! CreateSnippet()
-		let txt = s:get_visual_selection()
-		let snippetId = substitute(txt, " ", "_", "g")
-		let defaultTxt = input("What's the default text? ")
-		if strlen(defaultTxt) == 0
-			return
-		endif
-		let defaultLocale = input("What's the default locale? (nl) ")
-		if strlen(defaultLocale) == 0
-			let defaultLocale = "nl"
-		endif
-		if strlen(txt) == 0
-			echom "No text selected"
-			return
-		endif
-		execute ":write"
-		execute ":edit application/configs/snippets.ini"
-		execute "/\\\v\\\[staging\\\ :\\\ production\\\]"
-		execute "normal! Osnippets." . snippetId . ".has_text = 1"
-		execute "normal! osnippets." . snippetId . ".text." . defaultLocale . " = \"" . defaultTxt . "\""
-		execute "normal! o"
-		execute ":nohl"
-		execute ":write"
-		execute ":b#"
-	endfunction
-
-	vnoremap <C-s> :call CreateSnippet()<cr>
-
-" }}}}
-" Local overriding {{{
-	if filereadable(expand("~/.vimrc.local"))
-    	source ~/.vimrc.local
-	endif
 " }}}}
