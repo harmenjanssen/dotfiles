@@ -2366,10 +2366,10 @@ semver-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
 
-serverless@^1.36.2:
-  version "1.36.2"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.36.2.tgz#3cefb06c363bf335cff000540d9cda2f66b79261"
-  integrity sha512-CgTUnM4vA79+99Q5a0GkaDCcJsPYF0H8+Dd3gnUHjJWzoxWEEl52IgFwZFznMTW78jaond2CbSCzC4IDEKC2HA==
+serverless@^1.37.1:
+  version "1.37.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.37.1.tgz#2afb7473e27034edaa12da30cb723567c1ba8670"
+  integrity sha512-FDNQLl/SrGbEIaSrHOy8Qb1hvyynBh9TLQwFNP5jYNTNFntNssIukE10ZgnZNAI9gHDwFGhErYZ+yYj531aIwA==
   dependencies:
     archiver "^1.1.0"
     async "^1.5.2"
