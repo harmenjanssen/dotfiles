@@ -29,9 +29,4 @@ set -x -g XDEBUG_CONFIG "idekey=xdebug"
 #gpg-init
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/harmen/dotfiles/config/yarn/global/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/harmen/dotfiles/config/yarn/global/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/harmen/dotfiles/config/yarn/global/node_modules/tabtab/.completions/sls.fish ]; and . /Users/harmen/dotfiles/config/yarn/global/node_modules/tabtab/.completions/sls.fish
+ensure_tmux_is_running
