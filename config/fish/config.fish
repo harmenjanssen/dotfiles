@@ -29,4 +29,6 @@ set -x -g XDEBUG_CONFIG "idekey=xdebug"
 #gpg-init
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 
+status --is-interactive; and source (rbenv init -|psub)
+
 ensure_tmux_is_running
