@@ -37,6 +37,8 @@
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
     dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
+    my-changes = ls master..
+    their-changes = ls ..master
 
     # Branches, publishing, tracking, rebasing
     branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -44,8 +46,6 @@
     publish = "!git push -u origin $(git branch-name)"
     unpublish = "!git push origin :$(git branch-name)"
     unstage = reset HEAD
-    ours = "!f() { git co --ours $@ && git add $@; }; f"
-    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
     rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
     ff = "!f() { git merge --ff-only $1 && git branch -d $1; }; f"
     rename = "branch -m"
