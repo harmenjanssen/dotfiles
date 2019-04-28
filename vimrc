@@ -205,9 +205,9 @@ endif
 	set showmode
 	set showcmd
 
-	"set relativenumber
-	"set number
-	"set numberwidth=2
+    set relativenumber
+    set number
+    set numberwidth=2
 	set scrolloff=3
 
     " don't redraw the screen when running macros
@@ -506,9 +506,17 @@ endif
     nnoremap <leader>tn :TestNearest<cr>
 
     " FZF
+    function! ListFiles()
+        if filereadable('.git/config')
+            :GFiles
+        else
+            :Files
+        endif
+    endfunction
+
     "let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
     set rtp+=/usr/local/opt/fzf
-    nnoremap <c-p> :GFiles<cr>
+    nnoremap <c-p> :call ListFiles()<cr>
     nnoremap <leader>f :BTags<cr>
 
     " Note: this should probably be conditionally set or whatever.
@@ -517,7 +525,7 @@ endif
 
     let test#strategy = "vtr"
     if (filereadable('docker-compose.yml'))
-        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_web_1 phpunit"
+        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_web_1 ./vendor/bin/phpunit"
     endif
 
 	" CtrlP
