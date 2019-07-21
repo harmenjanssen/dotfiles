@@ -238,11 +238,13 @@ endif
 	function! Dark()
 		set background=dark
         call PinkCursor()
+        silent !tmux source-file ~/.tmux-themes/dark.conf
 	endfunction
 
 	function! Light()
 		set background=light
         call PinkCursor()
+        silent !tmux source-file ~/.tmux-themes/light.conf
 	endfunction
 
     function! Chomp(string)
@@ -252,11 +254,8 @@ endif
     let g:solarized_termcolors=256
     colorscheme solarized8
 
-    let profile = Chomp(system('/Users/harmen/.config/fish/get_profile'))
-    " Let current iTerm profile determine what background to use (unfortunately it's not possible to
-    " read the current profile at runtime, only which profile the window started with. This is why I
-    " use the somewhat less robust background color to guesstimate the profile.
-    if profile == "608, 8291, 10465"
+    let tmuxtheme = split(Chomp(system('tmux show-environment TMUX_THEME')), "=")[1]
+    if tmuxtheme == "dark"
         set background=dark
     else
         set background=light
