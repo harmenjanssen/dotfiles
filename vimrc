@@ -265,13 +265,6 @@ endif
 		set guifont=Fira\ Code:h13
         set macligatures
 		set linespace=5
-
-		" use dark background after 20:00
-        if strftime("%H") >= 8 && strftime("%H") <= 20
-            call Light()
-        else
-            call Dark()
-        endif
 	endif
 
 	command! Dark call Dark()
