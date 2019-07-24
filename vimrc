@@ -254,7 +254,7 @@ endif
     let g:solarized_termcolors=256
     colorscheme solarized8
 
-    let tmuxtheme = split(Chomp(system('tmux show-environment TMUX_THEME')), "=")[1]
+    let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
     if tmuxtheme == "dark"
         set background=dark
     else
