@@ -57,8 +57,11 @@ endif
     Bundle 'git://github.com/urso/haskell_syntax.vim.git'
     Plugin 'mustache/vim-mustache-handlebars'
 
-    Plugin 'phpactor/phpactor'
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
     Plugin 'Shougo/deoplete.nvim'
+
+    Plugin 'phpactor/phpactor'
     Plugin 'kristijanhusak/deoplete-phpactor'
 
     Plugin 'christoomey/vim-tmux-navigator'
