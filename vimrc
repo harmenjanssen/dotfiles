@@ -57,8 +57,9 @@ endif
     Bundle 'git://github.com/urso/haskell_syntax.vim.git'
     Plugin 'mustache/vim-mustache-handlebars'
 
-    Plugin 'shawncplus/phpcomplete.vim'
-    Plugin 'adoy/vim-php-refactoring-toolbox'
+    Plugin 'phpactor/phpactor'
+    Plugin 'Shougo/deoplete.nvim'
+    Plugin 'kristijanhusak/deoplete-phpactor'
 
     Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'christoomey/vim-tmux-runner'
@@ -517,7 +518,7 @@ endif
 
     let test#strategy = "vtr"
     if (filereadable('docker-compose.yml'))
-        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_web_1 ./vendor/bin/phpunit"
+        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_php_1 ./vendor/bin/phpunit"
     endif
 
 	" CtrlP
@@ -586,5 +587,11 @@ endif
     " PDV (PHP Documentor for Vim)
     let g:pdv_template_dir = $HOME ."/.vim/ultisnips/pdv/"
     nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
+
+    " PHPActor
+    autocmd FileType php setlocal omnifunc=phpactor#Complete
+
+    nnoremap <Leader>u :call phpactor#UseAdd()<CR>
+    nnoremap <Leader>mm :call phpactor#ContextMenu()<CR>
 
 " }}}}
