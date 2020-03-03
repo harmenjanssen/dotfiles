@@ -9,7 +9,7 @@ FILES=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php$`
 if [ "$FILES" != "" ]
 then
     #echo "Checking PHP Lint..."
-    for FILE in $FILES
+    for FILE in "${FILES[@]}"
     do
         php -l -d display_errors=0 $PROJECT/$FILE
         if [ $? != 0 ]
