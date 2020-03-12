@@ -56,6 +56,7 @@ endif
     Plugin 'purescript-contrib/purescript-vim'
     Bundle 'git://github.com/urso/haskell_syntax.vim.git'
     Plugin 'mustache/vim-mustache-handlebars'
+    Plugin 'evanleck/vim-svelte'
 
     Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
@@ -296,7 +297,7 @@ endif
 
 	" Set indentation for js files
 	augroup javascript
-	    autocmd FileType javascript,json,pug setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+	    autocmd FileType javascript,json,pug,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
         "autocmd FileType javascript set formatprg=prettier\ --print-width\ 100\ --stdin
         "autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
     augroup END
