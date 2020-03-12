@@ -33,4 +33,4 @@ status --is-interactive; and source (rbenv init -|psub)
 
 ensure_tmux_is_running
 
-set -g fish_user_paths "/usr/local/opt/node@8/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/node@10/bin" $fish_user_paths
