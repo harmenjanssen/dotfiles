@@ -1,6 +1,4 @@
-#set PATH  ~/.rbenv/shims /usr/local/opt/php55/bin ~/.node/bin /usr/local/bin ./vendor/bin $PATH
-#set PATH  /usr/local/bin /usr/local/sbin /usr/local/opt/php@7.1/bin /usr/local/opt/php@7.1/bin ./node_modules/.bin ~/.node/bin ./vendor/bin ~/.composer/vendor/bin $PATH
-set PATH  /usr/local/bin /usr/local/sbin ./node_modules/.bin ./vendor/bin $PATH
+set PATH ~/.composer/vendor/bin /usr/local/bin /usr/local/sbin ./node_modules/.bin ./vendor/bin $PATH
 
 set -x -g APPLICATION_ENV development
 
@@ -26,11 +24,9 @@ set -gx RBENV_ROOT /usr/local/var/rbenv
 
 set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
-#gpg-init
-set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
-
 status --is-interactive; and source (rbenv init -|psub)
 
 ensure_tmux_is_running
 
+set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/node@10/bin" $fish_user_paths

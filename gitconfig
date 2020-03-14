@@ -81,6 +81,11 @@
 [mergetool]
     keepBackup = true
 
+[merge "composer_json"]
+    name = composer JSON file merge driver
+    driver = composer-git-merge-driver %O %A %B %L %P
+    recursive = binary
+
 [merge]
     ;conflictstyle = diff3
 
