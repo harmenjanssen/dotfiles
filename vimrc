@@ -243,13 +243,13 @@ endif
 	function! Dark()
 		set background=dark
         call PinkCursor()
-        silent !tmux source-file ~/.tmux-themes/dark.conf
+        silent !sh ~/.config/dark.sh
 	endfunction
 
 	function! Light()
 		set background=light
         call PinkCursor()
-        silent !tmux source-file ~/.tmux-themes/light.conf
+        silent !sh ~/.config/light.sh
 	endfunction
 
     function! Chomp(string)
