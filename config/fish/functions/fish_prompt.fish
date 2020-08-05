@@ -5,9 +5,9 @@ function fish_prompt
         if test $CMD_DURATION -gt 2000
             set secs (math "$CMD_DURATION / 1000")
             if test $TMUX
-                reattach-to-user-namespace ~/.config/fish/osx_notification $history[1] $status $secs
+                reattach-to-user-namespace osascript ~/.config/fish/osx_notification.js $history[1] $status $secs
             else
-                ~/.config/fish/osx_notification $history[1] $theStatus $secs
+                osascript ~/.config/fish/osx_notification.js $history[1] $theStatus $secs
             end
         end
     end
