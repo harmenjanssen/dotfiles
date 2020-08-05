@@ -57,6 +57,7 @@ endif
     Bundle 'git://github.com/urso/haskell_syntax.vim.git'
     Plugin 'mustache/vim-mustache-handlebars'
     Plugin 'evanleck/vim-svelte'
+    Plugin 'Glench/Vim-Jinja2-Syntax'
 
     Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
