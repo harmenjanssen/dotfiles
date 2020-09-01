@@ -1,7 +1,7 @@
 [user]
     name = Harmen Janssen
     email = harmen@grrr.nl
-    signingkey = 736126C1C0C200C8
+	signingkey = F603DC009126FE64
 
 [core]
     autocrlf = input
@@ -72,11 +72,6 @@
 [color]
     ui = auto
 
-[color "status"]
-	added = yellow
-	changed = "white yellow"
-    untracked = "white yellow"
-    branch = "white normal bold"
 
 [mergetool]
     keepBackup = true
@@ -110,3 +105,5 @@
 
 [remote "origin"]
     prune = true
+[pull]
+	rebase = true
