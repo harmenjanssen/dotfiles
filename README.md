@@ -23,6 +23,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 And run `:VundleInstall` from Vim.
 
+The plugin PHPActor needs a separate `composer install` command, run from directory `~/vim/bundle/phpactor/`.
+
+
 *Note* some things in my vim setup have been reported problematic on vim 7.4.  
 Try to upgrade to the latest version, I'm maintaining vim via Homebrew and that seems to work fine.
 

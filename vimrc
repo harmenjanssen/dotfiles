@@ -523,7 +523,8 @@ endif
 
     let test#strategy = "vtr"
     if (filereadable('docker-compose.yml'))
-        let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_php_1 ./vendor/bin/phpunit"
+        "let g:test#php#phpunit#executable = "docker exec -it (basename $PWD)_php_1 ./vendor/bin/phpunit"
+        let g:test#php#phpunit#executable = "docker-compose exec php ./vendor/bin/phpunit"
     endif
 
 	" CtrlP
