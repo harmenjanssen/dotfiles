@@ -38,6 +38,7 @@ endif
     " Colors
 	Plugin 'lifepillar/vim-solarized8'
 	Plugin 'morhetz/gruvbox'
+	Plugin 'haishanh/night-owl.vim'
 
 	" Languages
     Plugin 'tobyS/vmustache'
@@ -68,6 +69,8 @@ endif
 
     Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'christoomey/vim-tmux-runner'
+
+    Plugin 'prettier/vim-prettier'
 
 	call vundle#end()
 
@@ -258,7 +261,8 @@ endif
     endfunction
 
     let g:solarized_termcolors=256
-    colorscheme solarized8
+    "colorscheme solarized8
+    colorscheme night-owl
 
     let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
     if tmuxtheme == "dark"
@@ -426,13 +430,13 @@ endif
      \ endif
 
 	" Execute php code in current buffer
-	function! ExecutePhp()
-		let bufcontent = join(getline(1, line('$')), "")
-		let code = substitute(bufcontent, '\v\<\?(php)?|\?\>', '', 'g')
-        execute "!php -r " . shellescape(code)
-	endfunction
+	"function! ExecutePhp()
+		"let bufcontent = join(getline(1, line('$')), "")
+		"let code = substitute(bufcontent, '\v\<\?(php)?|\?\>', '', 'g')
+        "execute "!php -r " . shellescape(code)
+	"endfunction
 
-	nnoremap <leader>p :call ExecutePhp()<cr>
+	"nnoremap <leader>p :call ExecutePhp()<cr>
 
 	" Auto-create folders when saving file in non-existent path
 	function! s:MkNonExDir(file, buf)
@@ -600,4 +604,10 @@ endif
     nnoremap <Leader>u :call phpactor#UseAdd()<CR>
     nnoremap <Leader>mm :call phpactor#ContextMenu()<CR>
 
+    " Prettier
+    autocmd FileType php let b:prettier_ft_default_args = {
+    \ 'parser': 'php',
+    \ }
+
+    autocmd BufWritePre *.js,*.jsx,*.php,*.scss,*.css exe "Prettier"
 " }}}}

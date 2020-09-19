@@ -14,7 +14,7 @@ set -x -g TERM xterm-256color
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
-set -x -g EDITOR vim
+set -x -g EDITOR nvim
 
 ssh-add ~/.ssh/id_dsa > /dev/null 2>&1
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
