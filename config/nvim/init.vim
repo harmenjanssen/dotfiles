@@ -357,3 +357,6 @@ let g:gutentags_ctags_extra_args = ["--tag-relative"]
 " Prettier
 autocmd BufWritePre *.js,*.jsx,*.php,*.scss,*.css exe "Prettier"
 
+" Phpactor
+nnoremap <Leader>u :call phpactor#UseAdd()<CR>
+nnoremap <Leader>mm :call phpactor#ContextMenu()<CR>
