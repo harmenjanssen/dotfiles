@@ -13,21 +13,29 @@ cd ~/.dotfiles
 node install.js
 ```
 
-## Vundle 
+## VimPlug
 
-My Vim setup uses Vundle, so grab that separately:
+My Neovim setup uses [VimPlug](https://github.com/junegunn/vim-plug). Install this first:
 
 ```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-And run `:VundleInstall` from Vim.
+Then run vim with just the plugins configuration (to avoid errors from yet-to-be-loaded plugins):
 
-The plugin PHPActor needs a separate `composer install` command, run from directory `~/vim/bundle/phpactor/`.
+```
+nvim -u ~/.config/nvim/plugins.vim
+```
 
+and run `:PlugInstall` from within vim.
 
-*Note* some things in my vim setup have been reported problematic on vim 7.4.  
-Try to upgrade to the latest version, I'm maintaining vim via Homebrew and that seems to work fine.
+Note that the [NCM2](https://github.com/ncm2/ncm2) plugin needs `pynvim`. Install using `pip`:
+
+```
+python3 -m pip install pynvim
+```
+
 
 ## Brewfile
 

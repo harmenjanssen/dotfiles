@@ -32,6 +32,7 @@ set modelines=0
 set hidden
 set mouse=n
 set ttyfast
+set complete=.,b,u,]
 
 " ------------------------------------------------- "
 " Mappings
@@ -67,6 +68,9 @@ onoremap { i{
 nnoremap <leader>w :w!<cr>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
 
 " ------------------------------------------------- "
 " Tabs, buffers, windows
@@ -130,6 +134,8 @@ set gdefault
 " I don't remember what this is for.
 autocmd QuickFixCmdPost *grep* cwindow
 
+set tags=./tags,.git/tags
+
 " ------------------------------------------------- "
 " Editor look and feel
 " ------------------------------------------------- "
@@ -145,6 +151,9 @@ colorscheme night-owl
 " a dark foreground.
 " See also: https://github.com/haishanh/night-owl.vim/issues/15
 hi Comment guifg=#011627 guibg=#637777
+hi jsComment guifg=#011627 guibg=#637777
+hi jsScriptLineComment guifg=#011627 guibg=#637777
+hi javascriptLineComment guifg=#011627 guibg=#637777
 
 set encoding=utf-8
 set splitbelow
@@ -204,7 +213,7 @@ set preserveindent
 set smartindent
 set breakindent
 set fileformat=unix
-set textwidth=100
+set textwidth=80
 set colorcolumn=+0
 set shiftwidth=4
 set tabstop=4
@@ -221,7 +230,7 @@ augroup END
 augroup textwidth
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
-	autocmd FileType markdown,html.twig,json,csv setlocal textwidth=0
+	autocmd FileType markdown,twig,json,csv setlocal textwidth=0
 augroup END
 
 function! StripTrailingWhitespace()
@@ -274,6 +283,7 @@ set clipboard=unnamed
 
 " Improve performance of listings by ignoring some files.
 set wildignore+=*.o,*.obj,*.jpg,*.jpeg,*.png,*.gif,*.ser,.git,public/js/build/prod/*
+set wildignorecase
 
 " Persistent history.
 set history=1000
@@ -355,8 +365,14 @@ let g:gutentags_ctags_tagfile = ".git/tags"
 let g:gutentags_ctags_extra_args = ["--tag-relative"]
 
 " Prettier
-autocmd BufWritePre *.js,*.jsx,*.php,*.scss,*.css exe "Prettier"
+autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css exe "PrettierAsync"
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
 
 " Phpactor
 nnoremap <Leader>u :call phpactor#UseAdd()<CR>
 nnoremap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set completeopt=noinsert,menuone,noselect

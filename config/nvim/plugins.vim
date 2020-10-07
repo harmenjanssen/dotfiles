@@ -19,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 
 " Code formatting.
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'scrooloose/nerdcommenter'
 
 " Colors.
 Plug 'haishanh/night-owl.vim'
@@ -30,6 +31,17 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 
 Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
+
+" Requirements of NCM2 and Phpactor:
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'phpactor/ncm2-phpactor'
+
+" Language support
+Plug 'evidens/vim-twig'
+
+"
+Plug 'junegunn/goyo.vim'
 
 " Initialize plugin system
 call plug#end()
