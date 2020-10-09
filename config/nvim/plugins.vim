@@ -39,6 +39,11 @@ Plug 'phpactor/ncm2-phpactor'
 
 " Language support
 Plug 'evidens/vim-twig'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 "
 Plug 'junegunn/goyo.vim'
