@@ -17,3 +17,4 @@ __pycache__
 /gnupg/private-keys-v1.d/
 /gnupg/openpgp-revocs.d/
 
+.netrwhist
