@@ -365,7 +365,7 @@ let g:gutentags_ctags_tagfile = ".git/tags"
 let g:gutentags_ctags_extra_args = ["--tag-relative"]
 
 " Prettier
-autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css exe "PrettierAsync"
+autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css,*.json exe "PrettierAsync"
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#autoformat_config_present = 1
