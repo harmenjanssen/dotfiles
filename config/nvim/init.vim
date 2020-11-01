@@ -146,14 +146,35 @@ set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 syntax on
-colorscheme night-owl
-" Override comment colors (otherwise a dark background is rendered instead of
-" a dark foreground.
-" See also: https://github.com/haishanh/night-owl.vim/issues/15
-hi Comment guifg=#011627 guibg=#637777
-hi jsComment guifg=#011627 guibg=#637777
-hi jsScriptLineComment guifg=#011627 guibg=#637777
-hi javascriptLineComment guifg=#011627 guibg=#637777
+
+function! Chomp(string)
+    return substitute(a:string, '\n\+$', '', '')
+endfunction
+
+function! Dark()
+    colorscheme night-owl
+    " Override comment colors (otherwise a dark background is rendered instead of
+    " a dark foreground.
+    " See also: https://github.com/haishanh/night-owl.vim/issues/15
+    hi Comment guifg=#011627 guibg=#637777
+    hi jsComment guifg=#011627 guibg=#637777
+    hi jsScriptLineComment guifg=#011627 guibg=#637777
+    hi javascriptLineComment guifg=#011627 guibg=#637777
+endfunction
+
+function! Light()
+    colorscheme lightowl
+endfunction
+
+command! Dark call Dark()
+command! Light call Light()
+
+let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
+if tmuxtheme == "dark"
+    call Dark()
+else
+    call Light()
+end
 
 set encoding=utf-8
 set splitbelow
