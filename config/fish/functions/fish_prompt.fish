@@ -25,9 +25,9 @@ function fish_prompt
 		set -l git_dirty_count (git status --porcelain  | wc -l | sed "s/ //g")
 		echo -n ":"
 		if test $git_dirty_count -gt 0
-			set_color red
+			set_color -o red
 		else
-			set_color green
+			set_color -o green
 		end
 		echo -n $git_branch
 		if test $git_dirty_count -gt 0
