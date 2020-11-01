@@ -230,7 +230,7 @@ augroup END
 augroup textwidth
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
-	autocmd FileType markdown,twig,json,csv setlocal textwidth=0
+	autocmd FileType markdown,twig,json,csv,yaml setlocal textwidth=0
 augroup END
 
 function! StripTrailingWhitespace()
