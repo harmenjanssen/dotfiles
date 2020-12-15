@@ -69,3 +69,4 @@
 --exclude=node_modules
 --exclude=bower_components
 --exclude=public/uploads/shared
+--exclude=vendor/bin/phpstan
