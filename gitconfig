@@ -91,7 +91,7 @@
     templatedir = ~/.git_template
 
 [interactive]
-    diffFilter = diff-highlight
+    ;diffFilter = diff-highlight
 
 [commit]
     gpgsign = true

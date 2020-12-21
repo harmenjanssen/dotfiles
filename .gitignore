@@ -18,3 +18,4 @@ __pycache__
 /gnupg/openpgp-revocs.d/
 
 .netrwhist
+config/coc/

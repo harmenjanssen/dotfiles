@@ -107,7 +107,7 @@ if executable('ag')
 endif
 
 " See https://thoughtbot.com/blog/faster-grepping-in-vim
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
@@ -153,6 +153,7 @@ endfunction
 
 function! Dark()
     colorscheme night-owl
+    silent !sh ~/.config/dark.sh
     " Override comment colors (otherwise a dark background is rendered instead of
     " a dark foreground.
     " See also: https://github.com/haishanh/night-owl.vim/issues/15
@@ -164,6 +165,7 @@ endfunction
 
 function! Light()
     colorscheme lightowl
+    silent !sh ~/.config/light.sh
 endfunction
 
 command! Dark call Dark()
@@ -251,7 +253,7 @@ augroup END
 augroup textwidth
 	autocmd!
 	autocmd FileType gitcommit setlocal textwidth=72
-	autocmd FileType markdown,twig,json,csv,yaml setlocal textwidth=0
+	autocmd FileType markdown,html,twig,html.twig,json,csv,yaml setlocal textwidth=0
 augroup END
 
 function! StripTrailingWhitespace()
@@ -386,10 +388,10 @@ let g:gutentags_ctags_tagfile = ".git/tags"
 let g:gutentags_ctags_extra_args = ["--tag-relative"]
 
 " Prettier
-autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css,*.json exe "PrettierAsync"
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat_config_present = 1
+"autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css,*.json exe "PrettierAsync"
+"let g:prettier#autoformat = 1
+"let g:prettier#autoformat_require_pragma = 0
+"let g:prettier#autoformat_config_present = 1
 
 " Phpactor
 nnoremap <Leader>u :call phpactor#UseAdd()<CR>
@@ -397,3 +399,39 @@ nnoremap <Leader>mm :call phpactor#ContextMenu()<CR>
 
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "set completeopt=noinsert,menuone,noselect
+
+" COC settings
+" Mostly stolen from https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+
+" Enter accepts suggestion.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Tab cycles through options.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#util#has_float() == 0)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>rn <Plug>(coc-rename)
+
+nmap <leader>do <Plug>(coc-codeaction)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
