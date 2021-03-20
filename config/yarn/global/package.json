@@ -3,6 +3,7 @@
     "bower": "^1.8.8",
     "create-keystone-app": "^1.4.1",
     "create-strapi-app": "^3.0.0-beta.18.4",
+    "diagnostic-languageserver": "^1.8.1",
     "intelephense": "^1.5.4",
     "netlify-cli": "^2.49.0",
     "trash-cli": "^3.0.0"
