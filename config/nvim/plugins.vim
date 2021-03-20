@@ -39,7 +39,9 @@ Plug 'christoomey/vim-tmux-runner'
 "Plug 'phpactor/ncm2-phpactor'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-  \ 'coc-tsserver'
+  \ 'coc-tsserver',
+  \ 'coc-diagnostic',
+  \ 'coc-eslint'
   \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
     let g:coc_global_extensions += ['coc-prettier']

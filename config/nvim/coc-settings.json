@@ -17,8 +17,16 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "markdown"
   ],
   "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true
+  "coc.preferences.formatOnType": true,
+  "diagnostic-languageserver.enable": true,
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "markdown": ["write-good", "markdownlint"],
+    "sh": "shellcheck",
+    "php": ["phpstan", "psalm"]
+  }
 }
