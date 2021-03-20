@@ -21,7 +21,7 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
 set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
-ensure_tmux_is_running
+#ensure_tmux_is_running
 
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/node@10/bin" $fish_user_paths
