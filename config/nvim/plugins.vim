@@ -24,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'
 " Colors.
 Plug 'haishanh/night-owl.vim'
 Plug 'harmenjanssen/light-owl.vim'
+Plug 'overcache/NeoSolarized'
 
 " Running tests.
 Plug 'janko-m/vim-test'

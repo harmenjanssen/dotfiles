@@ -152,19 +152,25 @@ function! Chomp(string)
 endfunction
 
 function! Dark()
-    colorscheme night-owl
+    "colorscheme night-owl
+    colorscheme NeoSolarized
+    set background=dark
+
     silent !sh ~/.config/dark.sh
     " Override comment colors (otherwise a dark background is rendered instead of
     " a dark foreground.
     " See also: https://github.com/haishanh/night-owl.vim/issues/15
-    hi Comment guifg=#011627 guibg=#637777
-    hi jsComment guifg=#011627 guibg=#637777
-    hi jsScriptLineComment guifg=#011627 guibg=#637777
-    hi javascriptLineComment guifg=#011627 guibg=#637777
+    "hi Comment guifg=#011627 guibg=#637777
+    "hi jsComment guifg=#011627 guibg=#637777
+    "hi jsScriptLineComment guifg=#011627 guibg=#637777
+    "hi javascriptLineComment guifg=#011627 guibg=#637777
 endfunction
 
 function! Light()
-    colorscheme lightowl
+    "colorscheme lightowl
+    colorscheme NeoSolarized
+    set background=light
+
     silent !sh ~/.config/light.sh
 endfunction
 
@@ -365,7 +371,9 @@ nnoremap <leader>tl :TestLast<cr>
 nnoremap <leader>tf :TestFile<cr>
 nnoremap <leader>tn :TestNearest<cr>
 
-let test#strategy = "vtr"
+"let test#strategy = "vtr"
+let test#strategy = "neovim"
+
 if (filereadable('docker-compose.yml'))
     let g:test#php#phpunit#executable = "docker-compose exec php ./vendor/bin/phpunit"
 endif
@@ -413,7 +421,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
 function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
+  if (coc#float#has_float() == 0)
     silent call CocActionAsync('doHover')
   endif
 endfunction
