@@ -18,7 +18,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "markdown"
+    "markdown",
+    "yaml"
   ],
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,
