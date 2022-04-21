@@ -37,8 +37,8 @@
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
     dif = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
-    my-changes = ls master..
-    their-changes = ls ..master
+    my-changes = ls main..
+    their-changes = ls ..main
 
     # Branches, publishing, tracking, rebasing
     branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -94,8 +94,8 @@
     ;diffFilter = diff-highlight
 
 [commit]
-    gpgsign = true
-	verbose = true
+    ;gpgsign = true
+	;verbose = true
 
 [gpg]
     program = gpg
