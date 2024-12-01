@@ -19,7 +19,7 @@ function fish_prompt
 	set_color normal
 
 	echo -n (prompt_pwd)
-	set -l git_branch (git rev-parse --abbrev-ref HEAD ^ /dev/null)
+	set -l git_branch (test -d .git && git rev-parse --abbrev-ref HEAD)
 
 	if test $git_branch
 		set -l git_dirty_count (git status --porcelain  | wc -l | sed "s/ //g")
@@ -40,18 +40,9 @@ function fish_prompt
     # Finally, the place where actual commands are put in
 	set_color normal
     set -l background_jobs (jobs | wc -l)
-	#if test $TMUX
-        if test $background_jobs -gt 0
-	        printf "\n\\ "
-	    else
-	        printf "\n\$> "
-	    end
-	#else
-        #if test $background_jobs -gt 0
-			#printf "\n👻 "
-		#else
-			#printf "\n⚡️ "
-		#end
-	#end
-
+	if test $background_jobs -gt 0
+		printf "\n\\ "
+	else
+		printf "\n\$> "
+	end
 end
