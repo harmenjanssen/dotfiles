@@ -10,6 +10,7 @@
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
+    "sh",
     "php",
     "json",
     "css",
@@ -29,5 +30,6 @@
     "markdown": ["write-good", "markdownlint"],
     "sh": "shellcheck",
     "php": ["phpstan", "psalm"]
-  }
+  },
+  "eslint.autoFixOnSave": true
 }

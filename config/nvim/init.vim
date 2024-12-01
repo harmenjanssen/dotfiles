@@ -67,6 +67,7 @@ onoremap { i{
 " Fast saving.
 nnoremap <leader>w :w!<cr>
 
+" Use %% as an alias for the current directory.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -152,26 +153,28 @@ function! Chomp(string)
 endfunction
 
 function! Dark()
-    "colorscheme night-owl
-    colorscheme NeoSolarized
+    colorscheme night-owl
+    "colorscheme NeoSolarized
+    "colorscheme nord
     set background=dark
 
-    silent !sh ~/.config/dark.sh
+    "silent !sh ~/.config/dark.sh
     " Override comment colors (otherwise a dark background is rendered instead of
     " a dark foreground.
     " See also: https://github.com/haishanh/night-owl.vim/issues/15
-    "hi Comment guifg=#011627 guibg=#637777
-    "hi jsComment guifg=#011627 guibg=#637777
-    "hi jsScriptLineComment guifg=#011627 guibg=#637777
-    "hi javascriptLineComment guifg=#011627 guibg=#637777
+    hi Comment guifg=#011627 guibg=#637777
+    hi jsComment guifg=#011627 guibg=#637777
+    hi jsScriptLineComment guifg=#011627 guibg=#637777
+    hi javascriptLineComment guifg=#011627 guibg=#637777
 endfunction
 
 function! Light()
     "colorscheme lightowl
-    colorscheme NeoSolarized
+    "colorscheme NeoSolarized
+    colorscheme base16-atelier-estuary-light
     set background=light
 
-    silent !sh ~/.config/light.sh
+    " silent !sh ~/.config/light.sh
 endfunction
 
 command! Dark call Dark()
@@ -179,9 +182,9 @@ command! Light call Light()
 
 "let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
 "if tmuxtheme == "dark"
-    "call Dark()
-"else
     call Light()
+"else
+    "call Light()
 "end
 
 set encoding=utf-8
@@ -301,12 +304,6 @@ augroup crontab
     autocmd FileType crontab setlocal nobackup nowritebackup
 augroup END
 
-" Jump to definition using <Enter>.
-augroup tag_navigation
-	autocmd!
-	autocmd BufRead,BufNewFile * if &l:modifiable | nnoremap <buffer> <CR> :exec("tag ".expand("<cword>"))<CR> | endif
-augroup END
-
 " Share the system clipboard.
 set clipboard=unnamed
 
@@ -380,10 +377,11 @@ endif
 
 " FZF
 function! ListFiles()
-    if filereadable('.git/config')
-        :GFiles
-    else
+    " If the buffer is in a git repository, use GFiles, otherwise Files
+    if finddir(".git", ".;") == ""
         :Files
+    else
+        :GFiles
     endif
 endfunction
 
@@ -392,14 +390,8 @@ nnoremap <leader>f :BTags<cr>
 nnoremap <leader>t :Tags<cr>
 
 " Gutentags
-let g:gutentags_ctags_tagfile = ".git/tags"
-let g:gutentags_ctags_extra_args = ["--tag-relative"]
-
-" Prettier
-"autocmd BufWritePre *.js,*.jsx,*.tsx,*.php,*.scss,*.css,*.json exe "PrettierAsync"
-"let g:prettier#autoformat = 1
-"let g:prettier#autoformat_require_pragma = 0
-"let g:prettier#autoformat_config_present = 1
+"let g:gutentags_ctags_tagfile = ".git/tags"
+"let g:gutentags_ctags_extra_args = ["--tag-relative"]
 
 " Phpactor
 nnoremap <Leader>u :call phpactor#UseAdd()<CR>
@@ -420,19 +412,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#float#has_float() == 0)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
-
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
-
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
-
 nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
@@ -443,3 +422,12 @@ nmap <leader>do <Plug>(coc-codeaction)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Jump to definition using <Enter>.
+augroup tag_navigation
+	autocmd!
+	autocmd BufRead,BufNewFile * if &l:modifiable | nnoremap <buffer> <CR> <Plug>(coc-definition) | endif
+augroup END
+
+nnoremap <silent> <C-t> :<C-u>CocList -I symbols<cr>
+
