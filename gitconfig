@@ -1,6 +1,6 @@
 [user]
     name = Harmen Janssen
-    email = harmen@grrr.nl
+    email = harmen.janssen@norday.nl
 	signingkey = F603DC009126FE64
 
 [core]
@@ -9,6 +9,8 @@
     editor = nvim
     fileMode = false
     excludesfile = ~/.gitignore
+	ignorecase = false
+	pager = delta
 
 [push]
     default = upstream
@@ -42,6 +44,8 @@
 
     # Branches, publishing, tracking, rebasing
     branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Get the main branch (main or master)
+    main = "! git rev-parse -q --verify --symbolic main || git rev-parse -q --verify --symbolic master;"
     track = "!f() { git branch --track $1 origin/$1 && git co $1; }; f"
     publish = "!git push -u origin $(git branch-name)"
     unpublish = "!git push origin :$(git branch-name)"
@@ -72,7 +76,6 @@
 [color]
     ui = auto
 
-
 [mergetool]
     keepBackup = true
 
@@ -89,6 +92,7 @@
 
 [init]
     templatedir = ~/.git_template
+	defaultBranch = main
 
 [interactive]
     ;diffFilter = diff-highlight
@@ -102,6 +106,7 @@
 
 [rebase]
     autosquash = true
+	autoStash = true
 
 [remote "origin"]
     prune = true
