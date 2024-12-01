@@ -1,6 +1,9 @@
-set PATH ~/.composer/vendor/bin /usr/local/bin /usr/local/sbin ./node_modules/.bin ./vendor/bin $PATH
-
-set -x -g APPLICATION_ENV development
+set PATH $HOME/Library/Application\ Support/Herd/bin/ \
+    ~/.composer/vendor/bin \
+    ./node_modules/.bin \
+    ./vendor/bin \
+    /usr/local/bin \
+    $PATH
 
 set fish_greeting
 
@@ -23,5 +26,19 @@ set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
 #ensure_tmux_is_running
 
-set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/node@10/bin" $fish_user_paths
+# Automatically switch to the right Node version if .nvmrc is present.
+# Shit, this messes up FZF in vim... How?!
+#load_nvm > /dev/stderr
+
+set -x HERD_PHP_74_INI_SCAN_DIR "/Users/harmen/Library/Application Support/Herd/config/php/74/"
+set -x HERD_PHP_80_INI_SCAN_DIR "/Users/harmen/Library/Application Support/Herd/config/php/80/"
+set -x HERD_PHP_81_INI_SCAN_DIR "/Users/harmen/Library/Application Support/Herd/config/php/81/"
+set -x HERD_PHP_82_INI_SCAN_DIR "/Users/harmen/Library/Application Support/Herd/config/php/82/"
+set -x HERD_PHP_83_INI_SCAN_DIR "/Users/harmen/Library/Application Support/Herd/config/php/83/"
+
+# pnpm
+set -gx PNPM_HOME "/Users/harmen/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
