@@ -21,3 +21,4 @@ __pycache__
 config/coc/
 
 config/gh/hosts.yml
+config/sanity/config.json
