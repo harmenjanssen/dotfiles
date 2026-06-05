@@ -1,1 +1,0 @@
-/Users/harmen/.config/fisherman/thefuck/functions/fuck.fish
