@@ -180,12 +180,7 @@ endfunction
 command! Dark call Dark()
 command! Light call Light()
 
-"let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
-"if tmuxtheme == "dark"
-    call Light()
-"else
-    "call Light()
-"end
+call Dark()
 
 set encoding=utf-8
 set splitbelow
