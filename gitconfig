@@ -12,8 +12,17 @@
 	ignorecase = false
 	pager = delta
 
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
 [push]
-    default = upstream
+	default = simple
+    autoSetupRemote = true
+
+[pull]
+	rebase = true
 
 [alias]
     # Typos
@@ -85,7 +94,7 @@
     recursive = binary
 
 [merge]
-    ;conflictstyle = diff3
+    conflictstyle = diff3
 
 [rerere]
     enabled = 1
@@ -93,6 +102,13 @@
 [init]
     templatedir = ~/.git_template
 	defaultBranch = main
+
+[tag]
+    sort = version:refname
+
+[diff]
+    algorithm = histogram
+    colorMoved = plain
 
 [interactive]
     ;diffFilter = diff-highlight
@@ -107,8 +123,10 @@
 [rebase]
     autosquash = true
 	autoStash = true
+	updateRefs = true
 
 [remote "origin"]
     prune = true
-[pull]
-	rebase = true
+
+[help]
+    autocorrect = prompt
