@@ -10,7 +10,7 @@ Install:
 ```
 git clone https://github.com/harmenjanssen/dotfiles ~/dotfiles
 cd ~/dotfiles
-./install.sh
+bash install.sh
 ```
 
 ## vim-plug
