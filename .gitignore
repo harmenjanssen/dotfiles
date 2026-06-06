@@ -4,6 +4,7 @@ vim/bundle
 fish_history
 fishd.*
 fish_read_history
+config/fish/fish_variables
 config/configstore
 config/robomongo
 config/yarn/global/node_modules
