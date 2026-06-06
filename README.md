@@ -35,6 +35,14 @@ new shell, so this needs to be in place before Fisher can bootstrap cleanly:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 ```
 
+Then in a fresh bash shell, install Node and register it as the default so
+`load_nvm` has something to fall back to:
+
+```
+nvm install node
+nvm alias default node
+```
+
 pnpm is the package manager of choice and is enabled through Corepack:
 
 ```
