@@ -148,39 +148,12 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 syntax on
 
-function! Chomp(string)
-    return substitute(a:string, '\n\+$', '', '')
-endfunction
-
-function! Dark()
-    colorscheme night-owl
-    "colorscheme NeoSolarized
-    "colorscheme nord
-    set background=dark
-
-    "silent !sh ~/.config/dark.sh
-    " Override comment colors (otherwise a dark background is rendered instead of
-    " a dark foreground.
-    " See also: https://github.com/haishanh/night-owl.vim/issues/15
-    hi Comment guifg=#011627 guibg=#637777
-    hi jsComment guifg=#011627 guibg=#637777
-    hi jsScriptLineComment guifg=#011627 guibg=#637777
-    hi javascriptLineComment guifg=#011627 guibg=#637777
-endfunction
-
-function! Light()
-    "colorscheme lightowl
-    "colorscheme NeoSolarized
-    colorscheme base16-atelier-estuary-light
-    set background=light
-
-    " silent !sh ~/.config/light.sh
-endfunction
-
-command! Dark call Dark()
-command! Light call Light()
-
-call Dark()
+colorscheme night-owl
+" Override comment colors. See https://github.com/haishanh/night-owl.vim/issues/15
+hi Comment guifg=#011627 guibg=#637777
+hi jsComment guifg=#011627 guibg=#637777
+hi jsScriptLineComment guifg=#011627 guibg=#637777
+hi javascriptLineComment guifg=#011627 guibg=#637777
 
 set encoding=utf-8
 set splitbelow

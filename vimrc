@@ -236,27 +236,6 @@ endif
 	set listchars=tab:·\ ,eol:¬
 	set nolist
 
-	function! PinkCursor()
-		" custom cursor color. Hot pink!
-		highlight Cursor guifg=white guibg=#d13a82
-	endfunction
-
-	function! Dark()
-		set background=dark
-        call PinkCursor()
-        silent !sh ~/.config/dark.sh
-	endfunction
-
-	function! Light()
-		set background=light
-        call PinkCursor()
-        silent !sh ~/.config/light.sh
-	endfunction
-
-    function! Chomp(string)
-        return substitute(a:string, '\n\+$', '', '')
-    endfunction
-
     let g:solarized_termcolors=256
     "colorscheme solarized8
     colorscheme night-owl
@@ -266,9 +245,6 @@ endif
         set macligatures
 		set linespace=5
 	endif
-
-	command! Dark call Dark()
-	command! Light call Light()
 
 " }}}}
 " Formatting {{{{
