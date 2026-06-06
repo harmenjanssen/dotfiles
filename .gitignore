@@ -7,7 +7,6 @@ fish_read_history
 config/fish/fish_variables
 config/configstore
 config/robomongo
-config/yarn/global/node_modules
 
 lein/repl-history
 psysh_history

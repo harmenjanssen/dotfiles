@@ -50,13 +50,15 @@ brew bundle
 in the dotfiles folder.
 
 
-## Global Yarn packages
+## Node and pnpm
 
-A handful of useful npm packages is installed globally using Yarn.
-The `yarn.lock` file is in this repository and all packages within can be installed using 
+Node is managed via [nvm](https://github.com/nvm-sh/nvm); the fish setup auto-switches versions
+based on `.nvmrc`. pnpm is the package manager of choice and is enabled through Corepack:
 
 ```
-yarn global upgrade
+corepack enable pnpm
 ```
 
-(This will also upgrade them to the latest version but I have yet to find a way to just install them)
+`PNPM_HOME` is set in `config/fish/config.fish`, so any globally installed packages
+(`pnpm add -g <pkg>`) end up on `PATH` automatically. No global manifest is tracked
+in this repo — install ad-hoc as needed.

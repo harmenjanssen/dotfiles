@@ -22,6 +22,7 @@ brew "pipx"
 brew "pngquant"
 brew "postgresql@15", restart_service: :changed
 brew "tmux"
+brew "trash"
 brew "tree"
 brew "hashicorp/tap/terraform"
 brew "snyk/tap/snyk"
