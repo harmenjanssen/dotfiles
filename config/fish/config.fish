@@ -55,8 +55,6 @@ ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
 set -x -g XDEBUG_CONFIG "idekey=xdebug"
 
-#ensure_tmux_is_running
-
 # Automatically switch to the right Node version if .nvmrc is present.
 load_nvm > /dev/stderr
 
