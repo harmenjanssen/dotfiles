@@ -143,17 +143,29 @@ set tags=./tags,.git/tags
 if (has("termguicolors"))
 	set termguicolors
 endif
-set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 syntax on
 
-colorscheme night-owl
-" Override comment colors. See https://github.com/haishanh/night-owl.vim/issues/15
-hi Comment guifg=#011627 guibg=#637777
-hi jsComment guifg=#011627 guibg=#637777
-hi jsScriptLineComment guifg=#011627 guibg=#637777
-hi javascriptLineComment guifg=#011627 guibg=#637777
+" Match the colorscheme to the macOS system appearance, the same way iTerm2
+" switches between Solarized Light and Dark.
+function! s:SetColorSchemeFromAppearance()
+	if trim(system('defaults read -g AppleInterfaceStyle 2>/dev/null')) ==# 'Dark'
+		set background=dark
+	else
+		set background=light
+	endif
+	colorscheme NeoSolarized
+endfunction
+
+call s:SetColorSchemeFromAppearance()
+
+" Re-check when focus returns to nvim, so toggling the system theme while
+" nvim is open takes effect as soon as you switch back to the terminal.
+augroup appearance
+	autocmd!
+	autocmd FocusGained * call s:SetColorSchemeFromAppearance()
+augroup END
 
 set encoding=utf-8
 set splitbelow
