@@ -25,6 +25,27 @@ nvim +PlugInstall +qall
 ```
 
 
+## Node and pnpm
+
+Node is managed via [nvm](https://github.com/nvm-sh/nvm); the fish setup auto-switches versions
+based on `.nvmrc`. Install nvm first — the fish config calls `load_nvm` on every
+new shell, so this needs to be in place before Fisher can bootstrap cleanly:
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+```
+
+pnpm is the package manager of choice and is enabled through Corepack:
+
+```
+corepack enable pnpm
+```
+
+`PNPM_HOME` is set in `config/fish/config.fish`, so any globally installed packages
+(`pnpm add -g <pkg>`) end up on `PATH` automatically. No global manifest is tracked
+in this repo — install ad-hoc as needed.
+
+
 ## Fish
 
 The fish setup uses [Fisher](https://github.com/jorgebucaran/fisher) for plugins.
@@ -64,17 +85,3 @@ brew bundle
 ```
 
 in the dotfiles folder.
-
-
-## Node and pnpm
-
-Node is managed via [nvm](https://github.com/nvm-sh/nvm); the fish setup auto-switches versions
-based on `.nvmrc`. pnpm is the package manager of choice and is enabled through Corepack:
-
-```
-corepack enable pnpm
-```
-
-`PNPM_HOME` is set in `config/fish/config.fish`, so any globally installed packages
-(`pnpm add -g <pkg>`) end up on `PATH` automatically. No global manifest is tracked
-in this repo — install ad-hoc as needed.
