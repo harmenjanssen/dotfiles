@@ -40,6 +40,19 @@ fisher update
 `~/.config/fish/`.
 
 
+## macOS settings
+
+`osx_config.sh` tweaks a bunch of macOS defaults (trackpad tap-to-click, fast
+key repeat, no smart dashes, sensible Finder defaults, etc.). It's tested on
+macOS Sequoia (15.x). Run it once on a new machine:
+
+```
+bash osx_config.sh
+```
+
+Some changes only take effect after a logout or restart.
+
+
 ## Brewfile
 
 I sorta manually try to remember to update the `Brewfile` from time to time.  
