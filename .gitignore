@@ -19,6 +19,15 @@ config/fish/conf.d/z.fish
 config/configstore
 config/robomongo
 
+# Sensitive: credentials and tokens
+config/gcloud/
+config/op/
+
+# Stateful CLI dirs (no value in versioning)
+config/algolia/
+config/devin/
+config/psysh/
+
 lein/repl-history
 psysh_history
 __pycache__
