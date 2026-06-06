@@ -37,6 +37,21 @@ python3 -m pip install pynvim
 ```
 
 
+## Fish
+
+The fish setup uses [Fisher](https://github.com/jorgebucaran/fisher) for plugins.
+Plugin files are not tracked in this repo — only the manifest `config/fish/fish_plugins`.
+On a new machine, bootstrap Fisher and install everything in one go:
+
+```fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+fisher update
+```
+
+`fisher update` reads `fish_plugins` and installs each listed plugin into
+`~/.config/fish/`.
+
+
 ## Brewfile
 
 I sorta manually try to remember to update the `Brewfile` from time to time.  

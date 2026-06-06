@@ -5,6 +5,17 @@ fish_history
 fishd.*
 fish_read_history
 config/fish/fish_variables
+
+# Fisher-managed plugin files (installed via `fisher update`)
+config/fish/functions/fisher.fish
+config/fish/completions/fisher.fish
+config/fish/functions/bass.fish
+config/fish/functions/__bass.py
+config/fish/functions/__z.fish
+config/fish/functions/__z_add.fish
+config/fish/functions/__z_clean.fish
+config/fish/functions/__z_complete.fish
+config/fish/conf.d/z.fish
 config/configstore
 config/robomongo
 
