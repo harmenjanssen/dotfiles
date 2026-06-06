@@ -100,7 +100,7 @@
     enabled = 1
 
 [init]
-    templatedir = ~/.git_template
+    templatedir = ~/.config/git/template
 	defaultBranch = main
 
 [tag]
