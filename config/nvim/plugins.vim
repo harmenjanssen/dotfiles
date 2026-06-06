@@ -28,10 +28,6 @@ Plug 'chriskempson/base16-vim'
 " Running tests.
 Plug 'janko-m/vim-test'
 
-" Tmux helpers
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
-
 " Autocompletion and Intellisense.
 " Open COC config file using :CocConfig.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

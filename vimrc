@@ -67,9 +67,6 @@ endif
     Plugin 'phpactor/phpactor'
     Plugin 'kristijanhusak/deoplete-phpactor'
 
-    Plugin 'christoomey/vim-tmux-navigator'
-    Plugin 'christoomey/vim-tmux-runner'
-
     Plugin 'prettier/vim-prettier'
 
 	call vundle#end()
@@ -263,13 +260,6 @@ endif
     let g:solarized_termcolors=256
     "colorscheme solarized8
     colorscheme night-owl
-
-    let tmuxtheme = split(Chomp(system('tmux show-environment -g TMUX_THEME')), "=")[1]
-    if tmuxtheme == "dark"
-        set background=dark
-    else
-        set background=light
-    end
 
 	if has("gui_running")
 		set guifont=Fira\ Code:h13
