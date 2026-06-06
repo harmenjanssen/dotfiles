@@ -8,7 +8,7 @@
     safecrlf = warn
     editor = nvim
     fileMode = false
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.config/git/ignore
 	ignorecase = false
 	pager = delta
 
