@@ -32,11 +32,6 @@ lein/repl-history
 psysh_history
 __pycache__
 
-/gnupg/trustdb.gpg
-/gnupg/pubring.*
-/gnupg/private-keys-v1.d/
-/gnupg/openpgp-revocs.d/
-
 .netrwhist
 config/coc/
 

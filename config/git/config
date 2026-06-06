@@ -1,7 +1,6 @@
 [user]
     name = Harmen Janssen
     email = harmen.janssen@norday.nl
-	signingkey = F603DC009126FE64
 
 [core]
     autocrlf = input
@@ -114,11 +113,7 @@
     ;diffFilter = diff-highlight
 
 [commit]
-    ;gpgsign = true
 	;verbose = true
-
-[gpg]
-    program = gpg
 
 [rebase]
     autosquash = true
