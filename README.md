@@ -8,32 +8,20 @@ best to cherry-pick the stuff you like.
 Install:
 
 ```
-git clone git://github.com/harmenjanssen/dotfiles ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/harmenjanssen/dotfiles ~/dotfiles
+cd ~/dotfiles
 node install.js
 ```
 
-## VimPlug
+## vim-plug
 
-My Neovim setup uses [VimPlug](https://github.com/junegunn/vim-plug). Install this first:
+The Neovim setup uses [vim-plug](https://github.com/junegunn/vim-plug). Bootstrap it
+and install plugins in one go:
 
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
-
-Then run vim with just the plugins configuration (to avoid errors from yet-to-be-loaded plugins):
-
-```
-nvim -u ~/.config/nvim/plugins.vim
-```
-
-and run `:PlugInstall` from within vim.
-
-Note that the [NCM2](https://github.com/ncm2/ncm2) plugin needs `pynvim`. Install using `pip`:
-
-```
-python3 -m pip install pynvim
+nvim +PlugInstall +qall
 ```
 
 
