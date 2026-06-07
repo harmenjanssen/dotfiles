@@ -150,7 +150,15 @@ syntax on
 " Match the colorscheme to the macOS system appearance, the same way iTerm2
 " switches between Solarized Light and Dark.
 function! s:SetColorSchemeFromAppearance()
-	if trim(system('defaults read -g AppleInterfaceStyle 2>/dev/null')) ==# 'Dark'
+	" Run the lookup on a clean POSIX shell. Going through &shell (fish) would
+	" execute the interactive startup (nvm, etc.), whose stdout pollutes the
+	" result so the comparison below never matches 'Dark'.
+	let l:saved_shell = &shell
+	let &shell = '/bin/sh'
+	let l:appearance = trim(system('defaults read -g AppleInterfaceStyle 2>/dev/null'))
+	let &shell = l:saved_shell
+
+	if l:appearance ==# 'Dark'
 		set background=dark
 	else
 		set background=light
